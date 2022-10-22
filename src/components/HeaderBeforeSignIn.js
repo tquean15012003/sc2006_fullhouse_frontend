@@ -10,7 +10,6 @@ function classNames(...classes) {
 export default function HeaderBeforeSignIn() {
     const { navigate } = useSelector(state => state.NavigationReducer)
 
-
     return (
         <header style={{ fontFamily: "'Gugi', cursive" }} className="fixed w-full top-0 z-50">
             <nav className="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5 ">
