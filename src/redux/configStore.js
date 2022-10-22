@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { NavigationReducer } from './reducers/NavigationReducer.js'
+import { SalaryReducer } from './reducers/SalaryReducer.js'
 
 const rootReducer = combineReducers({
-    NavigationReducer
+    NavigationReducer,
+    SalaryReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -48,7 +48,7 @@ export default function SignInPage() {
                 value={formik.values.username}
                 type="username" id="username"
                 className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="username"
+                placeholder="Username"
                 required />
             </div>
             <div className="mb-6 flex justify-between items-center">

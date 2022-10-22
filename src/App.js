@@ -23,36 +23,12 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        {/* Do exactly the same as figma */}
         <Route path='/' element={<LandingPage />} />
-
-        {/* Do exactly the same as figma */}
         <Route path='/signin' element={<SignInPage />} />
-
-        {/* Same theme as SignInPage - including 5 fields
-          username
-          password
-          confirmPassword
-          email
-          phoneNumber
-          Sign up button
-        */}
         <Route path='/signup' element={<SignUpPage />} />
-        {/* Same theme as SignUpPage - including 1 field
-          OTP
-          Verify button
-        */}
         <Route path='/confirmsignup' element={<ConfirmSignUp />} />
-
-        {/* Same theme as figma but add some more fields
-          email + Get OTP button
-          verificationCode
-          newPassword
-          confirmNewPassword
-        */}
         <Route path='/resetpassword' element={<ResetPasswordPage />} />
         <Route path='/feedback' element={<Feedback />} />
-        {/* Do exactly the same as figma */}
         <Route path='/profile' element={<ProfilePage />} />
       </Routes>
     </Fragment>

@@ -1,12 +1,7 @@
-import React, { Fragment } from 'react'
-import dropdown from '../../assets/images/dropdown.svg'
-import { Menu, Transition } from '@headlessui/react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function LandingPage() {
 

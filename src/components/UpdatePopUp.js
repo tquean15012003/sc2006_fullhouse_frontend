@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSalaryListAction } from "../redux/actions/SalaryActions";
 
 export default function UpdatePopUp() {
+
   const [showModal, setShowModal] = React.useState(false);
+
+  const dispatch = useDispatch()
+
+  const {salaryList} = useSelector(state=>state.SalaryReducer)
+
+  console.log(salaryList)
+
+  useEffect(() => {
+    dispatch(getSalaryListAction())
+  }, [dispatch])
+
   return (
     <>
       <button

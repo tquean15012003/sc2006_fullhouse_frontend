@@ -3,11 +3,15 @@ import dropdown from "../../assets/images/dropdown.svg";
 import { Menu, Transition } from "@headlessui/react";
 import avatar from "../../assets/images/avatar.jpg";
 import UpdatePopUp from "../../components/UpdatePopUp";
+import { useSelector } from "react-redux";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProfilePage() {
+
+  const { navigate } = useSelector(state => state.NavigationReducer)
+
   return (
     <div
       className="overflow-hidden "
@@ -48,11 +52,11 @@ export default function ProfilePage() {
                     <div className="py-1">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <p
+                            onClick={() => { navigate("/profile", { replace: false }) }}
                             className={classNames(
                               "text-white",
-                              "block px-4 py-2 text-sm"
+                              "block px-4 py-2 text-sm cursor-pointer"
                             )}
                           >
                             <svg
@@ -71,16 +75,16 @@ export default function ProfilePage() {
                               />
                             </svg>{" "}
                             Profile
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <p
+                           
                             className={classNames(
                               "text-white",
-                              "block px-4 py-2 text-sm"
+                              "block px-4 py-2 text-sm cursor-pointer"
                             )}
                           >
                             <svg
@@ -99,20 +103,19 @@ export default function ProfilePage() {
                               />
                             </svg>{" "}
                             Calculator
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <p
                             className={classNames(
                               "text-white",
-                              "block px-4 py-2 text-sm"
+                              "block px-4 py-2 text-sm cursor-pointer"
                             )}
                           >
                             <svg
-                              className="inline"
+                              className= "inline"
                               width="10"
                               height="3"
                               viewBox="0 0 10 3"
@@ -127,7 +130,7 @@ export default function ProfilePage() {
                               />
                             </svg>{" "}
                             Sign Out
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                     </div>
@@ -178,11 +181,11 @@ export default function ProfilePage() {
             <div className="w-full h-full">
               <h2 className="text-center">Retirement Track</h2>
               <div
-                class="w-full rounded-full h-2.5"
+                className="w-full rounded-full h-2.5"
                 style={{ background: "#D9D9D9" }}
               >
                 <div
-                  class="h-2.5 rounded-full"
+                  className="h-2.5 rounded-full"
                   style={{ width: "55%", background: "#02FF3A" }}
                 ></div>
               </div>
@@ -231,11 +234,11 @@ export default function ProfilePage() {
             <div className="w-full h-full">
               <h2 className="text-center">Retirement Track</h2>
               <div
-                class="w-full rounded-full h-2.5"
+                className="w-full rounded-full h-2.5"
                 style={{ background: "#D9D9D9" }}
               >
                 <div
-                  class="h-2.5 rounded-full"
+                  className="h-2.5 rounded-full"
                   style={{ width: "55%", background: "#02FF3A" }}
                 ></div>
               </div>

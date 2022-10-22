@@ -1,0 +1,1 @@
+export const SET_SALARY_LIST = "SET_SALARY_LIST"

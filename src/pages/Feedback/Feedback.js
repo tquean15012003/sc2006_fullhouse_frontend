@@ -1,11 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import { useFormik } from 'formik'
 
 export default function Feedback() {
-  const { navigate } = useSelector((state) => state.NavigationReducer);
-
   const dispatch = useDispatch();
 
   const formik = useFormik({
