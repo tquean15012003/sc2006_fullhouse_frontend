@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import { useFormik } from 'formik'
+import { sendFeedback } from '../../redux/actions/FeedbackActions';
 
 export default function Feedback() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Feedback() {
       feedback: "",
     },
     onSubmit: (values) => {
-      console.log(values)
+      dispatch(sendFeedback(values))
     }
   })
   return (

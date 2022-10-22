@@ -8,6 +8,7 @@ function classNames(...classes) {
 }
 
 export default function HeaderBeforeSignIn() {
+    
     const { navigate } = useSelector(state => state.NavigationReducer)
 
     return (

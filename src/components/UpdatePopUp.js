@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSalaryListAction } from "../redux/actions/SalaryActions";
 import Select from "react-select";
+
 export default function UpdatePopUp() {
   const [showModal, setShowModal] = React.useState(false);
   const [selectValue, setValue] = React.useState(100);
