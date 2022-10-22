@@ -1,20 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSalaryListAction } from "../redux/actions/SalaryActions";
-
+import Select from "react-select";
 export default function UpdatePopUp() {
-
   const [showModal, setShowModal] = React.useState(false);
+  const [selectValue, setValue] = React.useState(100);
 
-  const dispatch = useDispatch()
+  const handleSelect = (e) => {
+    setValue(e.gross_monthly_median);
+  };
+  const dispatch = useDispatch();
 
-  const {salaryList} = useSelector(state=>state.SalaryReducer)
-
-  console.log(salaryList)
+  const { salaryList } = useSelector((state) => state.SalaryReducer);
+  useEffect(() => {
+    salaryList[999] = {
+      degree: "Not Applicable",
+      school: "Default Value",
+      id: "NA",
+      gross_monthly_median: 2000,
+    };
+  });
 
   useEffect(() => {
-    dispatch(getSalaryListAction())
-  }, [dispatch])
+    dispatch(getSalaryListAction());
+  }, [dispatch]);
 
   return (
     <>
@@ -67,24 +76,18 @@ export default function UpdatePopUp() {
                               for="education"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
-                              Highest Education Type:
+                              Degree Type(If applicable):
                             </label>
                             <div class="relative">
-                              <select
-                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-10 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-state"
-                              >
-                                <option>PSLE</option>
-                                <option>N Level</option>
-                                <option>O Level</option>
-                                <option>Nitec</option>
-                                <option>Higher Nitec</option>
-                                <option>A Level</option>
-                                <option>Diploma</option>
-                                <option>Degree</option>
-                                <option>Masters</option>
-                                <option>PhD</option>
-                              </select>
+                              <Select
+                                className="text-black flex-auto"
+                                options={salaryList}
+                                getOptionLabel={(option) =>
+                                  option.degree + "-" + option.school
+                                }
+                                getOptionValue={(option) => option._id}
+                                onChange={handleSelect}
+                              />
                               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg
                                   class="fill-current h-4 w-4"
@@ -122,7 +125,7 @@ export default function UpdatePopUp() {
                               type="number"
                               id="salary"
                               className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                              placeholder="1000"
+                              placeholder={selectValue}
                               required
                             />
                           </div>
