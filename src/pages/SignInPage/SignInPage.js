@@ -1,13 +1,8 @@
-import React, { Fragment } from 'react'
-import dropdown from '../../assets/images/dropdown.svg'
-import { Menu, Transition } from '@headlessui/react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import { useFormik } from 'formik'
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import { signInAction } from '../../redux/actions/UserAction'
 
 export default function SignInPage() {
 
@@ -21,7 +16,7 @@ export default function SignInPage() {
       password: ""
     },
     onSubmit: (values) => {
-      console.log(values)
+      dispatch(signInAction(values))
     }
   })
 
@@ -35,12 +30,32 @@ export default function SignInPage() {
           <form onSubmit={formik.handleSubmit}>
             <h1 className="text-lg md:text-2xl font-bold text-center mb-4">SIGN IN</h1>
             <div className="mb-6 flex justify-between items-center">
-              <label htmlFor="username" className="text-base md:text-xl block mb-2 font-medium text-white mr-4">Username:</label>
-              <input onChange={formik.handleChange} value={formik.values.username} type="username" id="username" className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="username" required />
+              <label
+                htmlFor="username"
+                className="text-base md:text-xl blockfont-medium text-white mr-4">
+                Username:
+              </label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.username}
+                type="username" id="username"
+                className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="username"
+                required />
             </div>
             <div className="mb-6 flex justify-between items-center">
-              <label htmlFor="password" className="text-base md:text-xl block mb-2 font-medium text-white mr-4">Password:</label>
-              <input onChange={formik.handleChange} value={formik.values.password} type="password" id="password" className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="***********" required />
+              <label
+                htmlFor="password"
+                className="text-base md:text-xl block font-medium text-white mr-4">
+                Password:
+              </label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                type="password" id="password"
+                className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="***********"
+                required />
             </div>
             <p onClick={() => { navigate("/resetpassword", { replace: false }) }} className="cursor-pointer text-right text-base md:text-xl text-orange-400">Forget password?</p>
             <div className="mt-3 flex justify-center items-center">
