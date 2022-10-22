@@ -5,15 +5,14 @@ import { useFormik } from 'formik'
 import { signInAction } from '../../redux/actions/UserAction'
 
 export default function SignInPage() {
-
-  const { navigate } = useSelector(state => state.NavigationReducer)
+  const { navigate } = useSelector((state) => state.NavigationReducer);
 
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
       username: "",
-      password: ""
+      password: "",
     },
     onSubmit: (values) => {
       dispatch(signInAction(values))
@@ -21,14 +20,23 @@ export default function SignInPage() {
   })
 
   return (
-    <div className="overflow-hidden " style={{
-      background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
-    }}>
+    <div
+      className="overflow-hidden "
+      style={{
+        background:
+          "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
+      }}
+    >
       <HeaderBeforeSignIn />
       <div className="w-screen h-screen text-white flex justify-center items-center">
-        <div className='rounded-3xl p-6' style={{ background: "rgba(255, 255, 255, 0.04)" }}>
+        <div
+          className="rounded-3xl p-6"
+          style={{ background: "rgba(255, 255, 255, 0.04)" }}
+        >
           <form onSubmit={formik.handleSubmit}>
-            <h1 className="text-lg md:text-2xl font-bold text-center mb-4">SIGN IN</h1>
+            <h1 className="text-lg md:text-2xl font-bold text-center mb-4">
+              SIGN IN
+            </h1>
             <div className="mb-6 flex justify-between items-center">
               <label
                 htmlFor="username"
@@ -57,13 +65,25 @@ export default function SignInPage() {
                 placeholder="***********"
                 required />
             </div>
-            <p onClick={() => { navigate("/resetpassword", { replace: false }) }} className="cursor-pointer text-right text-base md:text-xl text-orange-400">Forget password?</p>
+            <p
+              onClick={() => {
+                navigate("/resetpassword", { replace: false });
+              }}
+              className="cursor-pointer text-right text-base md:text-xl text-orange-400"
+            >
+              Forget password?
+            </p>
             <div className="mt-3 flex justify-center items-center">
-              <button className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl" type="submit">Sign In</button>
+              <button
+                className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                type="submit"
+              >
+                Sign In
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
