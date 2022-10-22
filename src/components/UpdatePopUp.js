@@ -60,9 +60,16 @@ export default function UpdatePopUp() {
                                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-10 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-state"
                               >
-                                <option>New Mexico</option>
-                                <option>Missouri</option>
-                                <option>Texas</option>
+                                <option>PSLE</option>
+                                <option>N Level</option>
+                                <option>O Level</option>
+                                <option>Nitec</option>
+                                <option>Higher Nitec</option>
+                                <option>A Level</option>
+                                <option>Diploma</option>
+                                <option>Degree</option>
+                                <option>Masters</option>
+                                <option>PhD</option>
                               </select>
                               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg

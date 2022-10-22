@@ -154,8 +154,8 @@ export default function ProfilePage() {
                 <p className="mt-2">D.o.B - 07/12/1997</p>
                 <p className="mt-2">Degree - Computer Science (NTU)</p>
                 <p className="mt-2">Estimated Salary ($SGD) - 4500</p>
-                <p className="mt-2">Car Price ($SGD)- 500k</p>
-                <p className="mt-2">House Price - 650k</p>
+                <p className="mt-2">Car Price ($SGD) - 500k</p>
+                <p className="mt-2">House Price ($SGD) - 650k</p>
                 {/* <button
                   style={{ background: "#5100FD" }}
                   className="p-2 rounded mt-4 lg:mt-8"

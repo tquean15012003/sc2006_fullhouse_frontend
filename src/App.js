@@ -9,6 +9,7 @@ import SignUpPage from './pages/SignUpPage/SignUpPage'
 import ConfirmSignUp from './pages/SignUpPage/ConfirmSignUp'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import Feedback from './pages/Feedback/Feedback'
 
 function App() {
   const navigate = useNavigate()
@@ -50,7 +51,7 @@ function App() {
           confirmNewPassword
         */}
         <Route path='/resetpassword' element={<ResetPasswordPage />} />
-
+        <Route path='/feedback' element={<Feedback />} />
         {/* Do exactly the same as figma */}
         <Route path='/profile' element={<ProfilePage />} />
       </Routes>

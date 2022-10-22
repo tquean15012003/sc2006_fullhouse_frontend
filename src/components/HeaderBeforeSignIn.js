@@ -60,6 +60,15 @@ export default function HeaderBeforeSignIn() {
                                                 </p>
                                             )}
                                         </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <p onClick={() => { navigate("/feedback", { replace: false }) }} className={classNames('cursor-pointer text-white', 'block px-4 py-2 text-sm')} >
+                                                    <svg className='inline' width="10" height="3" viewBox="0 0 10 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="10" height="3" rx="1.5" fill="#D9D9D9" />
+                                                    </svg> Feedback
+                                                </p>
+                                            )}
+                                        </Menu.Item>
                                     </div>
                                 </Menu.Items>
                             </Transition>
