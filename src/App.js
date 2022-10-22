@@ -1,17 +1,13 @@
 import { Fragment, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import GuestMode from './pages/GuestMode/GuestMode';
-import Login from './pages/Login/Login';
-import NotFound from './pages/NotFound/NotFound';
-import Register from './pages/Register/Register';
-import Report from './pages/Report/Report';
-import ProfileTemplate from './templates/ProfileTemplate/ProfileTemplate';
-import LogInTemplate from './templates/LogInTemplate/LogInTemplate';
 import { useDispatch } from 'react-redux';
 import { setNavigationAction } from './redux/actions/NavigationActions';
-import GuestModeTemplate from './templates/GuestModeProfile/GuestModeTemplate';
-import Profile from './pages/Profile/Profile';
+import LandingPage from './pages/LandingPage/LandingPage';
+import SignInPage from './pages/SignInPage/SignInPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 function App() {
   const navigate = useNavigate();
@@ -25,25 +21,37 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        {/*Default page || Log in page*/}
-        <Route path='/' element={<LogInTemplate Component={Login} />} />    
-        <Route path='/login' element={<LogInTemplate Component={Login} />} />
+        {/* Do exactly the same as figma */}
+        <Route path='/' element={<LandingPage/>} />
 
-        {/*Register page*/}
-        <Route path='/register' element={<LogInTemplate Component={Register} />} />    
+        {/* Do exactly the same as figma */}
+        <Route path='/signin' element={<SignInPage />} />
 
-        {/*Guest mode page*/}
-        <Route path='/guestmode' element={<GuestModeTemplate Component={GuestMode} />} />    
+        {/* Same theme as SignInPage - including 5 fields
+          username
+          password
+          confirmPassword
+          email
+          phoneNumber
+          Sign up button
+        */}
+        <Route path='/signup' element={<SignUpPage />} />
+        {/* Same theme as SignUpPage - including 1 field
+          OTP
+          Verify button
+        */}
+        <Route path='/confirmsignup' element={<SignUpPage />} />
 
-        {/*User page*/}
-        <Route path='/profile' element={<ProfileTemplate Component={Profile} />} />    
+        {/* Same theme as figma but add some more fields
+          email + Get OTP button
+          verificationCode
+          newPassword
+          confirmNewPassword
+        */}
+        <Route path='/resetpassword' element={<ResetPasswordPage/>} />
 
-        {/*Report page*/}
-        <Route path='/report' element={<ProfileTemplate Component={Report} />} />  
-        <Route path='/guestmodereport' element={<GuestModeTemplate Component={Report} />} />  
-
-        {/*Not found page*/}
-        <Route path='*' element={<GuestModeTemplate Component={NotFound} />} />    
+        {/* Do exactly the same as figma */}
+        <Route path='/profile' element={<ProfilePage/>} />
 
       </Routes>
     </Fragment>
