@@ -50,18 +50,30 @@ export default function UpdatePopUp() {
 
                           <div className="mb-6 flex justify-between items-center">
                             <label
-                              htmlFor="username"
+                              for="education"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
-                              Highest Education: (to become a dropdown)
+                              Highest Education Type:
                             </label>
-                            <input
-                              type="username"
-                              id="username"
-                              className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                              placeholder="Username"
-                              required
-                            />
+                            <div class="relative">
+                              <select
+                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-10 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="grid-state"
+                              >
+                                <option>New Mexico</option>
+                                <option>Missouri</option>
+                                <option>Texas</option>
+                              </select>
+                              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg
+                                  class="fill-current h-4 w-4"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                              </div>
+                            </div>
                           </div>
                           <div className="mb-6 flex justify-between items-center">
                             <label
@@ -72,28 +84,43 @@ export default function UpdatePopUp() {
                             </label>
                             <input
                               type="number"
-                              id="age"
+                              id="gradage"
                               className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                              placeholder="22"
+                              placeholder="24"
                               required
                             />
                           </div>
                           <div className="mb-6 flex justify-between items-center">
                             <label
-                              for="password"
+                              for="salary"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
-                              Current Savings:
+                              Current Salary:
                             </label>
                             <input
                               type="number"
-                              id="age"
+                              id="salary"
+                              className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                              placeholder="1000"
+                              required
+                            />
+                          </div>
+                          <div className="mb-6 flex justify-between items-center">
+                            <label
+                              for="salaryinc"
+                              className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
+                            >
+                              Average Salary Increment:
+                            </label>
+                            <input
+                              type="number"
+                              id="salaryinc"
                               className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                               placeholder="22"
                               required
                             />
                           </div>
-                          <div className="mb-6 flex justify-between items-center">
+                          {/* <div className="mb-6 flex justify-between items-center">
                             <input
                               type="checkbox"
                               name="fiance"
@@ -105,10 +132,10 @@ export default function UpdatePopUp() {
                             >
                               Sharing Finances with Fiance
                             </label>
-                          </div>
+                          </div> */}
                           <div className="mb-6 flex justify-between items-center">
                             <label
-                              for="password"
+                              for="age"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
                               Current Age:
@@ -121,45 +148,68 @@ export default function UpdatePopUp() {
                               required
                             />
                           </div>
-
                           <div className="mb-6 flex justify-between items-center">
                             <label
-                              for="email"
+                              for="password"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
-                              Email:
+                              Total Car Price:
                             </label>
                             <input
-                              type="email"
-                              id="email"
+                              type="number"
+                              id="age"
                               className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                              placeholder="Email"
+                              placeholder="0"
                               required
                             />
                           </div>
 
                           <div className="mb-6 flex justify-between items-center">
                             <label
-                              for="phoneNumber"
+                              for="password"
                               className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
                             >
-                              Phone Number:
+                              No of Children:
                             </label>
                             <input
-                              type="text"
-                              id="phoneNumber"
+                              type="number"
+                              id="children"
                               className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                              placeholder="Phone Number"
+                              placeholder="1"
                               required
                             />
                           </div>
 
-                          <div className="mt-3 flex justify-center items-center">
+                          <div className="mb-6 flex justify-between items-center">
+                            <label
+                              for="password"
+                              className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
+                            >
+                              House Price:
+                            </label>
+                            <input
+                              type="number"
+                              id="age"
+                              className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                              placeholder="100000"
+                              required
+                            />
+                          </div>
+
+                          <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                             <button
-                              className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
-                              type="text"
+                              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="button"
+                              onClick={() => setShowModal(false)}
                             >
-                              Sign Up
+                              Close
+                            </button>
+                            <button
+                              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                              type="button"
+                              onClick={() => setShowModal(false)}
+                            >
+                              Save Changes
                             </button>
                           </div>
                         </form>
@@ -168,22 +218,6 @@ export default function UpdatePopUp() {
                   </div>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
-                </div>
               </div>
             </div>
           </div>
