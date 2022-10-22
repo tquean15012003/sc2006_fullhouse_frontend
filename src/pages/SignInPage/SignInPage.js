@@ -86,7 +86,9 @@ export default function SignInPage() {
               <input type="password" id="password" class="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="***********" required />
             </div>
             <p className="cursor-pointer text-right text-base md:text-xl text-orange-400">Forget password?</p>
-            <button type="text">Sign In</button>
+            <div className="mt-3 flex justify-center items-center">
+              <button className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl" type="text">Sign In</button>
+            </div>
           </form>
         </div>
       </div>
