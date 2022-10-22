@@ -6,13 +6,13 @@ export const signInAction = (loginInfo) => {
         try {
             const { data } = await userService.signInService(loginInfo)
 
-            localStorage.removeItem(TOKEN);
-            localStorage.setItem(TOKEN, data.token);
+            localStorage.removeItem(TOKEN)
+            localStorage.setItem(TOKEN, data.token)
 
-            const { navigate } = getState().NavigationReducer;
-            navigate("/profile", { replace: false });
+            const { navigate } = getState().NavigationReducer
+            navigate("/profile", { replace: false })
         } catch (errors) {
-            alert(errors.response.data.errors[0].message)
+            alert("Invalid username or password")
         }
     };
 }
@@ -20,14 +20,14 @@ export const signInAction = (loginInfo) => {
 export const signUpAction = (user) => {
     return async (dispatch, getState) => {
         try {
-            await userService.signUpService(user);
-            localStorage.removeItem(EMAIL);
-            localStorage.setItem(EMAIL, user.email);
+            await userService.signUpService(user)
+            localStorage.removeItem(EMAIL)
+            localStorage.setItem(EMAIL, user.email)
             alert("Register successfully. Please proceed to confirm your email.")
             const { navigate } = getState().NavigationReducer;
-            navigate("/confirmsignup", { replace: false });
+            navigate("/confirmsignup", { replace: false })
         } catch (errors) {
-            alert(errors.response.data.errors[0].message)
+            alert("Username, email or phone number has been taken!")
         }
     }
 }
@@ -40,11 +40,36 @@ export const verifyAction = (OTP) => {
                 email: localStorage.getItem(EMAIL)
             }
             console.log(verificationInfo)
-            await userService.verifyService(verificationInfo);
-            localStorage.removeItem(EMAIL);
+            await userService.verifyService(verificationInfo)
+            localStorage.removeItem(EMAIL)
             alert("Verify successfully!")
-            const { navigate } = getState().NavigationReducer;
-            navigate("/signin", { replace: false });
+            const { navigate } = getState().NavigationReducer
+            navigate("/signin", { replace: false })
+        } catch (errors) {
+            alert("Invalid OTP!")
+        }
+    }
+}
+
+export const sendVerificationCodeAction = (email, setSent) => {
+    return async (dispatch, getState) => {
+        try {
+            await userService.sendVerificationCodeService(email)
+            setSent(true)
+        } catch (errors) {
+            alert(errors.response.data.errors[0].message)
+        }
+    }
+}
+
+export const resetPasswordAction = (resetInfo) => {
+    return async (dispatch, getState) => {
+        try {
+            console.log(resetInfo)
+            await userService.resetPasswordService(resetInfo)
+            alert("Reset password successfully!")
+            const { navigate } = getState().NavigationReducer
+            navigate("/signin", { replace: false })
         } catch (errors) {
             alert(errors.response.data.errors[0].message)
         }

@@ -1,15 +1,37 @@
-import React, { Fragment, useState } from "react";
-import dropdown from "../../assets/images/dropdown.svg";
-import { Menu, Transition } from "@headlessui/react";
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import HeaderBeforeSignIn from "../../components/HeaderBeforeSignIn";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import * as Yup from 'yup';
+import { resetPasswordAction, sendVerificationCodeAction } from "../../redux/actions/UserAction";
 
 export default function ResetPasswordPage() {
 
   const [sent, setSent] = useState(false);
+
+  const dispatch = useDispatch()
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      verificationCode: "",
+      password: "",
+      passwordConfirmation: "",
+    },
+    validationSchema: Yup.object({
+      password: Yup.string()
+        .min(8, 'Password must contain at least 8 characters!')
+        .max(50, 'Password must contain at most 50 characters!!')
+        .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/, "Password must be a mix of uppercase/lowercase letters, numbers and special characters"),
+      passwordConfirmation: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Password must match'),
+      email: Yup.string()
+        .email('Invalid email!'),
+    }),
+    onSubmit: (values) => {
+      dispatch(resetPasswordAction(values))
+    }
+  })
 
   return (
     <div
@@ -19,80 +41,112 @@ export default function ResetPasswordPage() {
           "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
       }}
     >
-      <HeaderBeforeSignIn/>
+      <HeaderBeforeSignIn />
       <div className="w-screen h-screen text-white flex justify-center items-center">
         <div
           className="rounded-3xl p-6"
           style={{ background: "rgba(255, 255, 255, 0.04)" }}
         >
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <h1 className="text-lg md:text-2xl font-bold text-center mb-4">
               RESET PASSWORD
             </h1>
-            <div class="mb-6 flex justify-between items-center">
-              <label
-                for="username"
-                class="text-base md:text-xl block mb-2 font-medium text-white mr-4"
-              >
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                class="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="email@email.com"
-              />
-              <button
-                className="mx-10 px-10 py-1 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
-                type="text"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-              >
-                Send OTP
-              </button>
+            <div className="mb-6">
+              <div className="flex justify-between items-center">
+                <label
+                  htmlFor="username"
+                  className="text-base md:text-xl block font-medium text-white mr-4"
+                >
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  placeholder="email@email.com"
+                  required
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
+                  onBlur={formik.handleBlur}
+                />
+                <p
+                  className="cursor-pointer mx-10 px-10 py-1 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                  onClick={(e) => {
+                    dispatch(sendVerificationCodeAction({"email": formik.values.email}, setSent))
+                  }}
+                >
+                  Send OTP
+                </p>
+              </div>
+              {formik.touched.email && formik.errors.email ? (<div className="mt-2 text-red-400">{formik.errors.email}</div>) : null}
             </div>
-          </form>
-          <div>
-            {sent ? <p className=" text-teal-500">OTP Sent to email!</p> : null}
-            <br></br>
-          </div>
-          <form>
-            <div class="mb-6 flex justify-between items-center">
+            <div className="mb-6 flex justify-between items-center">
+              {sent ? <p className=" text-teal-500">OTP Sent to email!</p> : null}
+            </div>
+            <div className="mb-6 flex justify-between items-center">
               <label
-                for="OTP"
-                class="text-base md:text-xl block mb-2 font-medium text-white mr-4"
+                htmlFor="verificationCode"
+                className="text-base md:text-xl block font-medium text-white mr-4"
               >
                 OTP:
               </label>
               <input
-                type="OTP"
-                id="OTP"
-                class="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                type="text"
+                id="verificationCode"
+                className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="123456"
                 required
+                onChange={formik.handleChange}
+                value={formik.values.verificationCode}
+                onBlur={formik.handleBlur}
               />
             </div>
-            <div class="mb-6 flex justify-between items-center">
-              <label
-                for="OTP"
-                class="text-base md:text-xl block mb-2 font-medium text-white mr-4"
-              >
-                New Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                class="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="***********"
-                required
-              />
+            <div className="mb-6">
+              <div className="flex justify-between items-center">
+                <label
+                  htmlFor="password"
+                  className="text-base md:text-xl block font-medium text-white mr-4"
+                >
+                  New Password:
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  placeholder="***********"
+                  required
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched.password && formik.errors.password ? (<div className="mt-2 text-red-400">{formik.errors.password}</div>) : null}
+            </div>
+            <div className="mb-6">
+              <div className="flex justify-between items-center">
+                <label
+                  htmlFor="passwordConfirmation"
+                  className="text-base md:text-xl block font-medium text-white mr-4"
+                >
+                  Confirm Password:
+                </label>
+                <input
+                  type="password"
+                  id="passwordConfirmation"
+                  className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  placeholder="***********"
+                  required
+                  onChange={formik.handleChange}
+                  value={formik.values.passwordConfirmation}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation ? (<div className="mt-2 text-red-400">{formik.errors.passwordConfirmation}</div>) : null}
             </div>
             <div className="mt-3 flex justify-center items-center">
               <button
                 className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
-                type="text"
+                type="submit"
               >
                 Reset Password
               </button>

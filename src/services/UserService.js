@@ -12,6 +12,14 @@ export class UserService extends baseService {
     verifyService = (verificationInfo) => {
         return this.post('users/verify', verificationInfo)
     }
+
+    sendVerificationCodeService = (email) => {
+        return this.post('users/sendresetcode', email)
+    }
+
+    resetPasswordService = (resetInfo) => {
+        return this.post('users/resetpassword', resetInfo)
+    }
 }
 
 export const userService = new UserService();
