@@ -150,12 +150,12 @@ export default function ProfilePage() {
             <div>
               <h2 className="font-bold text-2xl">User Profile</h2>
               <div className="p-3 text-md lg:text-xl">
-                <p className="mt-2">Name - Koh Jackwin</p>
-                <p className="mt-2">D.o.B - 19/07/1991</p>
+                <p className="mt-2">Name - Adrian Ang</p>
+                <p className="mt-2">D.o.B - 07/12/1997</p>
                 <p className="mt-2">Degree - Computer Science (NTU)</p>
                 <p className="mt-2">Estimated Salary ($SGD) - 4500</p>
                 <p className="mt-2">Car Price ($SGD)- 500k</p>
-                <p className="mt-2">House Type - 5 Room</p>
+                <p className="mt-2">House Price - 650k</p>
                 {/* <button
                   style={{ background: "#5100FD" }}
                   className="p-2 rounded mt-4 lg:mt-8"
@@ -193,7 +193,7 @@ export default function ProfilePage() {
             style={{ background: "rgba(255, 255, 255, 0.04)" }}
           >
             <div>
-              <h2 className="font-bold text-xl">Invesment</h2>
+              <h2 className="font-bold text-xl">Investment</h2>
               <div className="p-3 text-md lg:text-xl">
                 <div className="mt-3 flex justify-between items-center">
                   <p className="mr-2 lg:mr-4">S&P 500</p>
