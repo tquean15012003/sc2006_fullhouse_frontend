@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import * as Yup from 'yup';
 import { signUpAction } from '../../redux/actions/UserAction';
+import background from '../../assets/images/background.png'
 
 export default function SignUpPage() {
 
@@ -40,13 +41,14 @@ export default function SignUpPage() {
   })
 
   return (
-    <div
-      className='overflow-hidden '
-      style={{
-        background:
-          'linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)',
-      }}
-    >
+    <div className="overflow-x-hidden overflow-y-hidden" style={{
+      backgroundImage: `url(${background})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundosition: "right"
+      // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
+    }}>
       <HeaderBeforeSignIn />
       <div className='w-screen h-screen text-white flex justify-center items-center'>
         <div

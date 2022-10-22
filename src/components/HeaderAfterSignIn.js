@@ -96,7 +96,7 @@ export default function HeaderAfterSignIn() {
                                                             fill="#D9D9D9"
                                                         />
                                                     </svg>{" "}
-                                                    Calculator
+                                                    Suggestion
                                                 </p>
                                             )}
                                         </Menu.Item>
@@ -136,6 +136,11 @@ export default function HeaderAfterSignIn() {
                         <span className="text-white self-center text-xl xl:text-2xl font-bold whitespace-nowrap">
                             Full House
                         </span>
+                    </div>
+                    <div className="flex items-center lg:order-2">
+                        <p onClick={() => { navigate("/profile", { replace: false }) }} className="cursor-pointer text-white focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">PROFILE</p>
+                        <p onClick={() => { navigate("/signin", { replace: false }) }} className="cursor-pointer text-white focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">SUGGESTION</p>
+                        <p onClick={() => { dispatch(signOutAction()) }} className="cursor-pointer focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800" style={{ color: "#FA0F0F" }}>SIGN OUT</p>
                     </div>
                 </div>
             </nav>

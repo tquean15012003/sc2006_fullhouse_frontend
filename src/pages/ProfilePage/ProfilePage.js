@@ -2,20 +2,20 @@ import React from "react";
 import avatar from "../../assets/images/avatar.jpg";
 import UpdatePopUp from "../../components/UpdatePopUp";
 import HeaderAfterSignIn from "../../components/HeaderAfterSignIn";
-
-
+import background from '../../assets/images/background.png'
 
 export default function ProfilePage() {
-
   return (
-    <div
-      className="overflow-hidden "
-      style={{
-        background:
-          "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
-        fontFamily: "'Gugi', cursive",
-      }}
-    >
+
+    <div className="overflow-x-hidden overflow-y-hidden" style={{
+      backgroundImage: `url(${background})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundosition: "right",
+      fontFamily: "'Gugi', cursive",
+      // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
+    }}>
       <HeaderAfterSignIn />
       <div className="mt-20 md:mt-0 md:w-screen md:h-screen text-white flex justify-center items-center">
         <div className="grid grid-rows-5 grid-flow-row lg:grid-flow-col gap-4">
