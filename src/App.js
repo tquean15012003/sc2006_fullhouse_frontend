@@ -1,18 +1,19 @@
-import { Fragment, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import './App.css';
-import { useDispatch } from 'react-redux';
-import { setNavigationAction } from './redux/actions/NavigationActions';
-import LandingPage from './pages/LandingPage/LandingPage';
-import SignInPage from './pages/SignInPage/SignInPage';
-import SignUpPage from './pages/SignUpPage/SignUpPage';
-import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+import { Fragment, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import './App.css'
+import { useDispatch } from 'react-redux'
+import { setNavigationAction } from './redux/actions/NavigationActions'
+import LandingPage from './pages/LandingPage/LandingPage'
+import SignInPage from './pages/SignInPage/SignInPage'
+import SignUpPage from './pages/SignUpPage/SignUpPage'
+import ConfirmSignUp from './pages/SignUpPage/ConfirmSignUp'
+import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 function App() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(setNavigationAction(navigate))
@@ -22,7 +23,7 @@ function App() {
     <Fragment>
       <Routes>
         {/* Do exactly the same as figma */}
-        <Route path='/' element={<LandingPage/>} />
+        <Route path='/' element={<LandingPage />} />
 
         {/* Do exactly the same as figma */}
         <Route path='/signin' element={<SignInPage />} />
@@ -40,7 +41,7 @@ function App() {
           OTP
           Verify button
         */}
-        <Route path='/confirmsignup' element={<SignUpPage />} />
+        <Route path='/confirmsignup' element={<ConfirmSignUp />} />
 
         {/* Same theme as figma but add some more fields
           email + Get OTP button
@@ -48,13 +49,12 @@ function App() {
           newPassword
           confirmNewPassword
         */}
-        <Route path='/resetpassword' element={<ResetPasswordPage/>} />
+        <Route path='/resetpassword' element={<ResetPasswordPage />} />
 
         {/* Do exactly the same as figma */}
-        <Route path='/profile' element={<ProfilePage/>} />
-
+        <Route path='/profile' element={<ProfilePage />} />
       </Routes>
     </Fragment>
   )
 }
-export default App;
+export default App
