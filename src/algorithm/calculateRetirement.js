@@ -11,7 +11,7 @@ const getRetirementAge = (salary, carPrice, housePrice, currentSaving, investmen
     salary = salary;
     child = noChild;
     carPrice = 0; //KIV
-    buildingPrice = 0; //KIV
+    housePrice = 0; //KIV
 
     init = init - (child * 170000) - carPrice - buildingPrice;
 
