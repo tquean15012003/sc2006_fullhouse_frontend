@@ -5,22 +5,16 @@ import Select from "react-select";
 
 export default function UpdatePopUp() {
   const [showModal, setShowModal] = React.useState(false);
+
   const [selectValue, setValue] = React.useState(100);
 
   const handleSelect = (e) => {
     setValue(e.gross_monthly_median);
   };
+
   const dispatch = useDispatch();
 
   const { salaryList } = useSelector((state) => state.SalaryReducer);
-  useEffect(() => {
-    salaryList[999] = {
-      degree: "Not Applicable",
-      school: "Default Value",
-      id: "NA",
-      gross_monthly_median: 2000,
-    };
-  });
 
   useEffect(() => {
     dispatch(getSalaryListAction());
@@ -29,7 +23,7 @@ export default function UpdatePopUp() {
   return (
     <>
       <button
-        style={{backgroundColor: "#5100FD"}}
+        style={{ backgroundColor: "#5100FD" }}
         className="mt-4 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
@@ -80,26 +74,15 @@ export default function UpdatePopUp() {
                             >
                               Degree Type(If applicable):
                             </label>
-                            <div class="relative">
-                              <Select
-                                className="text-black flex-auto"
-                                options={salaryList}
-                                getOptionLabel={(option) =>
-                                  option.degree + "-" + option.school
-                                }
-                                getOptionValue={(option) => option._id}
-                                onChange={handleSelect}
-                              />
-                              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg
-                                  class="fill-current h-4 w-4"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                              </div>
-                            </div>
+                            <Select
+                              className="text-black flex-auto"
+                              options={salaryList}
+                              getOptionLabel={(option) =>
+                                option.degree + "-" + option.school
+                              }
+                              getOptionValue={(option) => option._id}
+                              onChange={handleSelect}
+                            />
                           </div>
                           <div className="mb-6 flex justify-between items-center">
                             <label
@@ -146,19 +129,6 @@ export default function UpdatePopUp() {
                               required
                             />
                           </div>
-                          {/* <div className="mb-6 flex justify-between items-center">
-                            <input
-                              type="checkbox"
-                              name="fiance"
-                              value="fiance"
-                            />
-                            <label
-                              for="fiance"
-                              className="text-base md:text-xl block mb-2 font-medium text-white mr-4"
-                            >
-                              Sharing Finances with Fiance
-                            </label>
-                          </div> */}
                           <div className="mb-6 flex justify-between items-center">
                             <label
                               for="age"
