@@ -56,7 +56,7 @@ export default function ConfirmSignUp() {
 
             <div className='mt-3 flex justify-center items-center'>
               <button
-                className='px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl'
+                className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl'
                 type='submit'
               >
                 Verify

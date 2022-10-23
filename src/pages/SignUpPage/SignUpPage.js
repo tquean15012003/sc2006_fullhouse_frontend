@@ -66,7 +66,7 @@ export default function SignUpPage() {
                   htmlFor='username'
                   className='text-base md:text-xl block font-medium text-white mr-4'
                 >
-                  Username:
+                  <span className="whitespace-nowrap">Username:</span>
                 </label>
                 <input
                   type='username'
@@ -88,7 +88,7 @@ export default function SignUpPage() {
                   htmlFor='password'
                   className='text-base md:text-xl block font-medium text-white mr-4'
                 >
-                  Password:
+                  <span className="whitespace-nowrap">Password:</span>
                 </label>
                 <input
                   type='password'
@@ -110,7 +110,7 @@ export default function SignUpPage() {
                   htmlFor='passwordConfirmation'
                   className='text-base md:text-xl block font-medium text-white mr-4'
                 >
-                  Confirm Password:
+                  <span className="whitespace-nowrap">Confirm password:</span>
                 </label>
                 <input
                   type='password'
@@ -132,13 +132,13 @@ export default function SignUpPage() {
                   htmlFor='email'
                   className='text-base md:text-xl block font-medium text-white mr-4'
                 >
-                  Email:
+                  <span className="whitespace-nowrap">Email:</span>
                 </label>
                 <input
                   type='email'
                   id='email'
                   className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                  placeholder='Email'
+                  placeholder='abc@e.ntu.edu.sg'
                   required
                   onChange={formik.handleChange}
                   value={formik.values.email}
@@ -154,13 +154,13 @@ export default function SignUpPage() {
                   htmlFor='phoneNumber'
                   className='text-base md:text-xl block font-medium text-white mr-4'
                 >
-                  Phone Number:
+                  <span className="whitespace-nowrap">Phone number:</span>
                 </label>
                 <input
                   type='text'
                   id='phoneNumber'
                   className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                  placeholder='Phone Number'
+                  placeholder='83052512'
                   required
                   onChange={formik.handleChange}
                   value={formik.values.phoneNumber}
@@ -172,7 +172,7 @@ export default function SignUpPage() {
 
             <div className='mt-3 flex justify-center items-center'>
               <button
-                className='px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl'
+                className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl'
                 type='submit'
               >
                 Sign Up

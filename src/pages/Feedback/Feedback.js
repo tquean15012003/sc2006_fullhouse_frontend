@@ -29,10 +29,10 @@ export default function Feedback() {
       <HeaderBeforeSignIn />
       <div className="w-screen h-screen text-white flex justify-center items-center">
         <div
-          className="rounded-3xl p-6"
+          className="rounded-3xl p-6 w-1/2"
           style={{ background: "rgba(255, 255, 255, 0.04)" }}
         >
-          <form onSubmit={formik.handleSubmit}>
+          <form clas onSubmit={formik.handleSubmit}>
             <h1 className="text-lg md:text-2xl font-bold text-center mb-4">
               Feedback Form
             </h1>
@@ -40,7 +40,7 @@ export default function Feedback() {
               <label
                 htmlFor="email"
                 className="text-base md:text-xl blockfont-medium text-white mr-4">
-                Email:
+                <span className="whitespace-nowrap">Email:</span>
               </label>
               <input
                 onChange={formik.handleChange}
@@ -54,20 +54,20 @@ export default function Feedback() {
               <label
                 htmlFor="feedback"
                 className="text-base md:text-xl block font-medium text-white mr-4">
-                Feedback:
+                <span className="whitespace-nowrap">Feedback:</span>
               </label>
               <textarea
                 onChange={formik.handleChange}
                 value={formik.values.feedback}
                 type="feedback" id="feedback"
-                className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full h-40 p-4"
+                className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full h-40 lg:h-80 p-4"
                 placeholder="Please leave feedbacks!" >
               </textarea>
 
             </div>
             <div className="mt-3 flex justify-center items-center">
               <button
-                className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                className="px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl"
                 type="submit"
               >
                 Submit

@@ -43,7 +43,7 @@ export default function SignInPage() {
               <label
                 htmlFor="username"
                 className="text-base md:text-xl blockfont-medium text-white mr-4">
-                Username:
+                <span className="whitespace-nowrap">Username:</span>
               </label>
               <input
                 onChange={formik.handleChange}
@@ -57,7 +57,7 @@ export default function SignInPage() {
               <label
                 htmlFor="password"
                 className="text-base md:text-xl block font-medium text-white mr-4">
-                Password:
+                <span className="whitespace-nowrap">Password:</span>
               </label>
               <input
                 onChange={formik.handleChange}
@@ -77,7 +77,7 @@ export default function SignInPage() {
             </p>
             <div className="mt-3 flex justify-center items-center">
               <button
-                className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                className="px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl"
                 type="submit"
               >
                 Sign In

@@ -10,6 +10,8 @@ import ConfirmSignUp from './pages/SignUpPage/ConfirmSignUp'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import Feedback from './pages/Feedback/Feedback'
+import SubmitProfilePage from './pages/SubmitProfilePage/SubmitProfilePage'
+import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 
 function App() {
   const navigate = useNavigate()
@@ -30,6 +32,8 @@ function App() {
         <Route path='/resetpassword' element={<ResetPasswordPage />} />
         <Route path='/feedback' element={<Feedback />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/submitprofile' element={<SubmitProfilePage />} />
+        <Route path='/suggestion' element={<SuggestionPage />} />
       </Routes>
     </Fragment>
   )

@@ -59,7 +59,7 @@ export default function ResetPasswordPage() {
                   htmlFor="username"
                   className="text-base md:text-xl block font-medium text-white mr-4"
                 >
-                  Email:
+                  <span className="whitespace-nowrap">Email:</span>
                 </label>
                 <input
                   type="email"
@@ -72,9 +72,9 @@ export default function ResetPasswordPage() {
                   onBlur={formik.handleBlur}
                 />
                 <p
-                  className="cursor-pointer mx-10 px-10 py-1 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                  className="cursor-pointer ml-10 px-10 py-1 bg-gray-500 hover:bg-gray-200 hover:text-black duration-500 hover:scale-110 rounded-2xl"
                   onClick={(e) => {
-                    dispatch(sendVerificationCodeAction({"email": formik.values.email}, setSent))
+                    dispatch(sendVerificationCodeAction({ "email": formik.values.email }, setSent))
                   }}
                 >
                   Send OTP
@@ -90,7 +90,7 @@ export default function ResetPasswordPage() {
                 htmlFor="verificationCode"
                 className="text-base md:text-xl block font-medium text-white mr-4"
               >
-                OTP:
+                <span className="whitespace-nowrap">OTP:</span>
               </label>
               <input
                 type="text"
@@ -109,7 +109,7 @@ export default function ResetPasswordPage() {
                   htmlFor="password"
                   className="text-base md:text-xl block font-medium text-white mr-4"
                 >
-                  New Password:
+                  <span className="whitespace-nowrap">New password:</span>
                 </label>
                 <input
                   type="password"
@@ -130,7 +130,7 @@ export default function ResetPasswordPage() {
                   htmlFor="passwordConfirmation"
                   className="text-base md:text-xl block font-medium text-white mr-4"
                 >
-                  Confirm Password:
+                  <span className="whitespace-nowrap">Confirm password:</span>
                 </label>
                 <input
                   type="password"
@@ -147,7 +147,7 @@ export default function ResetPasswordPage() {
             </div>
             <div className="mt-3 flex justify-center items-center">
               <button
-                className="px-6 py-2 bg-gray-500 hover:bg-gray-200 hover:text-black rounded-2xl"
+                className="px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl"
                 type="submit"
               >
                 Reset Password
