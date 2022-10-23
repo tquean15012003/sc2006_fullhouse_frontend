@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import avatar from "../../assets/images/avatar.jpg";
-import UpdatePopUp from "../../components/UpdatePopUp";
+// import UpdatePopUp from "../../components/UpdatePopUp";
 import HeaderAfterSignIn from "../../components/HeaderAfterSignIn";
 import background from '../../assets/images/background.png'
+import { useDispatch, useSelector } from "react-redux";
+import { getRetirementAgeAction, getRetirementInfoAction } from "../../redux/actions/RetirementInfoActions";
 
 export default function ProfilePage() {
-  return (
 
+  const dispatch = useDispatch()
+
+  const { navigate } = useSelector(state => state.NavigationReducer)
+
+  const { retirementInfo, retirementAge } = useSelector(state => state.RetirementInfoReducer)
+
+  useEffect(() => {
+    dispatch(getRetirementInfoAction())
+    dispatch(getRetirementAgeAction())
+  }, [dispatch])
+
+  return (
     <div className="overflow-x-hidden overflow-y-hidden" style={{
       backgroundImage: `url(${background})`,
       backgroundPosition: 'center',
@@ -17,7 +30,8 @@ export default function ProfilePage() {
       // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
     }}>
       <HeaderAfterSignIn />
-      <div className="mt-20 md:mt-0 md:w-screen md:h-screen text-white flex justify-center items-center">
+      <div style={{
+      }} className="mt-20 md:mt-0 md:w-screen md:h-screen text-white flex justify-center items-center">
         <div className="grid grid-rows-5 grid-flow-row lg:grid-flow-col gap-4">
           <div
             className="row-span-5 lg:row-span-4 col-span-8 rounded-3xl p-4 flex justify-between"
@@ -25,26 +39,32 @@ export default function ProfilePage() {
           >
             <div>
               <h2 className="font-bold text-2xl">User Profile</h2>
-              <div className="p-3 text-md lg:text-xl">
-                <p className="mt-2">Name - Adrian Ang</p>
-                <p className="mt-2">D.o.B - 07/12/1997</p>
-                <p className="mt-2">Degree - Computer Science (NTU)</p>
-                <p className="mt-2">Estimated Salary ($SGD) - 4500</p>
-                <p className="mt-2">Car Price ($SGD) - 500k</p>
-                <p className="mt-2">House Price ($SGD) - 650k</p>
-                {/* <button
+              <div className="p-3 text-md lg:text-lg">
+                <p className="mt-1">Name - {retirementInfo?.name}</p>
+                <p className="mt-1">Age - {retirementInfo?.age}</p>
+                <p className="mt-1">Age of graduation - {retirementInfo?.ageOfGrad}</p>
+                <p className="mt-1">Degree - {retirementInfo?.degree}</p>
+                {parseInt(retirementInfo?.salary) !== 0 ? <p className="mt-1">Estimated Salary ($SGD) - {retirementInfo?.salary}</p> : ""}
+                {parseInt(retirementInfo?.currentSaving) !== 0 ? <p className="mt-1">Current saving - {retirementInfo?.currentSaving}</p> : ""}
+                {parseInt(retirementInfo?.noChild) !== 0 ? <p className="mt-1">No. children - {retirementInfo?.noChild}</p> : ""}
+                <p className="mt-1">House price - {retirementInfo?.housePrice}</p>
+                <p className="mt-1">Car category - {retirementInfo?.carCat}</p>
+                <button
+                  onClick={() => {
+                    navigate("/updateprofile", { replace: false })
+                  }}
                   style={{ background: "#5100FD" }}
-                  className="p-2 rounded mt-4 lg:mt-8"
+                  className="p-2 rounded mt-4 lg:mt-8 duration-500 hover:scale-125"
                   type="text"
                 >
                   Update User Profile
-                </button> */}
-                <UpdatePopUp />
+                </button>
+                {/* <UpdatePopUp /> */}
               </div>
             </div>
             <div className="hidden sm:flex justify-between items-center">
               <img
-                className="rounded-full sm:h-40 md:h-80"
+                className="rounded-full sm:h-40 md:h-60"
                 src={avatar}
                 alt="avatar"
               />
@@ -59,7 +79,7 @@ export default function ProfilePage() {
               >
                 <div
                   className="h-2.5 rounded-full"
-                  style={{ width: "55%", background: "#02FF3A" }}
+                  style={{ width: `${parseInt(retirementInfo?.age) / retirementAge * 100}%`, background: "#02FF3A" }}
                 ></div>
               </div>
             </div>
@@ -70,25 +90,8 @@ export default function ProfilePage() {
           >
             <div>
               <h2 className="font-bold text-xl">Investment</h2>
-              <div className="p-3 text-md lg:text-xl">
-                <div className="mt-3 flex justify-between items-center">
-                  <p className="mr-2 lg:mr-4">S&P 500</p>
-                  <span
-                    className="px-5 py-1 rounded-2xl text-lg"
-                    style={{ background: "#fff", color: "#15C83C" }}
-                  >
-                    5%
-                  </span>
-                </div>
-                <div className="mt-3 flex justify-between items-center">
-                  <p className="mr-2 lg:mr-4">Crypto</p>
-                  <span
-                    className="px-5 py-1 rounded-2xl text-lg"
-                    style={{ background: "#fff", color: "#15C83C" }}
-                  >
-                    5%
-                  </span>
-                </div>
+              <div className="p-3 text-md lg:text-lg">
+                <p className="text-center text-bold text-xl lg:text-4xl text-red-400">{retirementInfo?.investments}%</p>
               </div>
             </div>
           </div>
@@ -97,9 +100,9 @@ export default function ProfilePage() {
             style={{ background: "rgba(255, 255, 255, 0.04)" }}
           >
             <div>
-              <h2 className="font-bold text-xl">Estimated Retirement Age </h2>
+              <h2 className="font-bold text-lg">Estimated Retirement Age </h2>
               <p className="text-center text-4xl" style={{ color: "#5ED135" }}>
-                57
+                {retirementAge}
               </p>
             </div>
           </div>
@@ -112,7 +115,7 @@ export default function ProfilePage() {
               >
                 <div
                   className="h-2.5 rounded-full"
-                  style={{ width: "55%", background: "#02FF3A" }}
+                  style={{ width: `${parseInt(retirementInfo?.age) / retirementAge * 100}%`, background: "#02FF3A" }}
                 ></div>
               </div>
             </div>
