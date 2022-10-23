@@ -19,6 +19,10 @@ export const carCatList = [
         id: 5,
         value: "E"
     },
+    {
+        id: 6,
+        value: "No car"
+    },
 ]
 
 export const demoSalaryObject = {
