@@ -7,7 +7,6 @@ import java.util.*;
 
 class HelloWorld {
     public static void main(String[] args) {
-       
         int savings=0,investment=0, total =0;
         int invst=1;
         int costofliving=0;
