@@ -1,149 +1,22 @@
-import React, { Fragment } from "react";
-import dropdown from "../../assets/images/dropdown.svg";
-import { Menu, Transition } from "@headlessui/react";
+import React from "react";
 import avatar from "../../assets/images/avatar.jpg";
 import UpdatePopUp from "../../components/UpdatePopUp";
-import { useSelector } from "react-redux";
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import HeaderAfterSignIn from "../../components/HeaderAfterSignIn";
+import background from '../../assets/images/background.png'
 
 export default function ProfilePage() {
-
-  const { navigate } = useSelector(state => state.NavigationReducer)
-
   return (
-    <div
-      className="overflow-hidden "
-      style={{
-        background:
-          "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
-        fontFamily: "'Gugi', cursive",
-      }}
-    >
-      <header className="fixed w-full top-0 z-50">
-        <nav className="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5 ">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <div className="flex items-center">
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="inline-flex w-full justify-center rounded-md px-2 py-2 text-sm font-medium text-gray-700 shadow-sm">
-                    <img
-                      src={dropdown}
-                      className="mr-3 h-6"
-                      alt="DropdownImage"
-                    />
-                  </Menu.Button>
-                </div>
 
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items
-                    style={{ background: "rgba(255, 255, 255, 0.04)" }}
-                    className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  >
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <p
-                            onClick={() => { navigate("/profile", { replace: false }) }}
-                            className={classNames(
-                              "text-white",
-                              "block px-4 py-2 text-sm cursor-pointer"
-                            )}
-                          >
-                            <svg
-                              className="inline"
-                              width="10"
-                              height="3"
-                              viewBox="0 0 10 3"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <rect
-                                width="10"
-                                height="3"
-                                rx="1.5"
-                                fill="#D9D9D9"
-                              />
-                            </svg>{" "}
-                            Profile
-                          </p>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <p
-                           
-                            className={classNames(
-                              "text-white",
-                              "block px-4 py-2 text-sm cursor-pointer"
-                            )}
-                          >
-                            <svg
-                              className="inline"
-                              width="10"
-                              height="3"
-                              viewBox="0 0 10 3"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <rect
-                                width="10"
-                                height="3"
-                                rx="1.5"
-                                fill="#D9D9D9"
-                              />
-                            </svg>{" "}
-                            Calculator
-                          </p>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <p
-                            className={classNames(
-                              "text-white",
-                              "block px-4 py-2 text-sm cursor-pointer"
-                            )}
-                          >
-                            <svg
-                              className= "inline"
-                              width="10"
-                              height="3"
-                              viewBox="0 0 10 3"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <rect
-                                width="10"
-                                height="3"
-                                rx="1.5"
-                                fill="#D9D9D9"
-                              />
-                            </svg>{" "}
-                            Sign Out
-                          </p>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-              <span className="text-white self-center text-xl xl:text-2xl font-bold whitespace-nowrap">
-                Full House
-              </span>
-            </div>
-          </div>
-        </nav>
-      </header>
+    <div className="overflow-x-hidden overflow-y-hidden" style={{
+      backgroundImage: `url(${background})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundosition: "right",
+      fontFamily: "'Gugi', cursive",
+      // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
+    }}>
+      <HeaderAfterSignIn />
       <div className="mt-20 md:mt-0 md:w-screen md:h-screen text-white flex justify-center items-center">
         <div className="grid grid-rows-5 grid-flow-row lg:grid-flow-col gap-4">
           <div

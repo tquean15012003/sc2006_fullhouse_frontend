@@ -5,10 +5,8 @@ export const signInAction = (loginInfo) => {
     return async (dispatch, getState) => {
         try {
             const { data } = await userService.signInService(loginInfo)
-
             localStorage.removeItem(TOKEN)
             localStorage.setItem(TOKEN, data.token)
-
             const { navigate } = getState().NavigationReducer
             navigate("/profile", { replace: false })
         } catch (errors) {
@@ -74,4 +72,18 @@ export const resetPasswordAction = (resetInfo) => {
             alert(errors.response.data.errors[0].message)
         }
     }
+}
+
+export const signOutAction = () => {
+    return async (dispatch, getState) => {
+        try {
+            localStorage.removeItem(TOKEN);
+            const { navigate } = getState().NavigationReducer
+            navigate("/", { replace: false })
+            window.location.reload();
+        } catch (errors) {
+            alert(errors.response.data.errors[0].message)
+        }
+    }
+
 }
