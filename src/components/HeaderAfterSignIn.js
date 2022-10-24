@@ -75,7 +75,7 @@ export default function HeaderAfterSignIn() {
                                         <Menu.Item>
                                             {({ active }) => (
                                                 <p
-
+                                                    onClick={() => { navigate("/suggestion", { replace: false }) }}
                                                     className={classNames(
                                                         "text-white",
                                                         "block px-4 py-2 text-sm cursor-pointer"
@@ -133,7 +133,7 @@ export default function HeaderAfterSignIn() {
                                 </Menu.Items>
                             </Transition>
                         </Menu>
-                        <span className="cursor-pointer duration-500 hover:scale-125 text-white self-center text-xl xl:text-2xl font-bold whitespace-nowrap">
+                        <span onClick={() => { navigate("/profile", { replace: false }) }} className="cursor-pointer duration-500 hover:scale-125 text-white self-center text-xl xl:text-2xl font-bold whitespace-nowrap">
                             Full House
                         </span>
                     </div>

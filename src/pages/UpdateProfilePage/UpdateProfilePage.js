@@ -6,12 +6,14 @@ import { useFormik } from 'formik'
 import Select from "react-select";
 import { getSalaryListAction } from '../../redux/actions/SalaryActions'
 import { carCatList, uniMap } from '../../utils/DemoObject'
-import { updateRetirementInfoAction } from '../../redux/actions/RetirementInfoActions'
+import { getRetirementInfoAction, updateRetirementInfoAction } from '../../redux/actions/RetirementInfoActions'
 
 
-export default function SubmitProfilePage() {
+export default function UpdateProfilePage() {
 
   const { salaryList } = useSelector(state => state.SalaryReducer)
+
+  const { retirementInfo } = useSelector(state => state.RetirementInfoReducer)
 
   const dispatch = useDispatch()
 
@@ -23,20 +25,22 @@ export default function SubmitProfilePage() {
 
   useEffect(() => {
     dispatch(getSalaryListAction());
+    dispatch(getRetirementInfoAction())
   }, [dispatch]);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      name: "",
-      age: "",
-      ageOfGrad: "",
-      noChild: "",
-      currentSaving: "",
-      degree: "",
-      salary: "",
-      carCat: "",
-      housePrice: "",
-      investments: ""
+      name: retirementInfo.name,
+      age: retirementInfo.age,
+      ageOfGrad: retirementInfo.ageOfGrad,
+      noChild: retirementInfo.noChild,
+      currentSaving: retirementInfo.currentSaving,
+      degree: retirementInfo.degree,
+      salary: retirementInfo.salary,
+      carCat: retirementInfo.carCat,
+      housePrice: retirementInfo.housePrice,
+      investments: retirementInfo.investments
     },
     onSubmit: (values) => {
       dispatch(updateRetirementInfoAction(values))
@@ -51,16 +55,15 @@ export default function SubmitProfilePage() {
       backgroundRepeat: 'no-repeat',
       backgroundosition: "right",
       fontFamily: "'Gugi', cursive"
-      // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
     }}>
       <HeaderAfterSignIn />
       <div style={{
-              // fontFamily: "'Fredoka One', cursive"
+            //   fontFamily: "'Fredoka One', cursive"
       }} className="w-screen h-screen text-white flex justify-center items-center">
         <div className='rounded-3xl p-6 flex' style={{ background: "rgba(255, 255, 255, 0.04)" }}>
           <form onSubmit={formik.handleSubmit}>
             <h1 className="text-lg md:text-2xl font-bold text-left mb-6">
-              SUBMIT PROFILE
+              UPDATE PROFILE
             </h1>
             <div className="flex-column lg:flex justify-between items-center mb-6">
               <div className="lg:mr-6">
@@ -236,16 +239,6 @@ export default function SubmitProfilePage() {
                         formik.setFieldValue("carCat", e.value)
                       }}
                     />
-                    {/* <input
-                      type='text'
-                      id='catCat'
-                      className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                      placeholder='400000'
-                      required
-                      onChange={formik.handleChange}
-                      value={formik.values.catCat}
-                      onBlur={formik.handleBlur}
-                    /> */}
                   </div>
                   {formik.touched.catCat && formik.errors.catCat ? (<div className="mt-2 text-red-400">{formik.errors.catCat}</div>) : null}
                 </div>
@@ -301,7 +294,7 @@ export default function SubmitProfilePage() {
                 className='px-6 py-2 text-xl hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl'
                 type='submit'
               >
-                Submit
+                Update
               </button>
             </div>
           </form>

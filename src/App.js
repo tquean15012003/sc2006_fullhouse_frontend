@@ -13,6 +13,7 @@ import Feedback from './pages/Feedback/Feedback'
 import SubmitProfilePage from './pages/SubmitProfilePage/SubmitProfilePage'
 import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 import ShowSuggestions from './pages/SuggestionPage/ShowSuggestions'
+import UpdateProfilePage from './pages/UpdateProfilePage/UpdateProfilePage'
 
 function App() {
   const navigate = useNavigate()
@@ -39,6 +40,7 @@ function App() {
           element={<ShowSuggestions />}
         />
         <Route path='/suggestion' element={<SuggestionPage />} />
+        <Route path='/updateprofile' element={<UpdateProfilePage />} />
       </Routes>
     </Fragment>
   )
