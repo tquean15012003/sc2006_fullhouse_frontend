@@ -10,7 +10,6 @@ export default function SuggestionPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(favouredAge)
     navigate(`/showsuggestions/${favouredAge}`, { replace: false })
   }
 
@@ -23,7 +22,6 @@ export default function SuggestionPage() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundosition: 'right',
-        fontFamily: "'Gugi', cursive"
         // background: "linear-gradient(238.87deg, #1E1E1E 11.19%, #141929 48.52%, #121A37 67.18%)",
       }}
     >
