@@ -14,6 +14,7 @@ import SubmitProfilePage from './pages/SubmitProfilePage/SubmitProfilePage'
 import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 import ShowSuggestions from './pages/SuggestionPage/ShowSuggestions'
 import UpdateProfilePage from './pages/UpdateProfilePage/UpdateProfilePage'
+import ChangePasswordPage from './pages/ChangePasswordPage/ChangePasswordPage'
 
 function App() {
   const navigate = useNavigate()
@@ -41,6 +42,7 @@ function App() {
         />
         <Route path='/suggestion' element={<SuggestionPage />} />
         <Route path='/updateprofile' element={<UpdateProfilePage />} />
+        <Route path='/changepassword' element={<ChangePasswordPage />} />
       </Routes>
     </Fragment>
   )

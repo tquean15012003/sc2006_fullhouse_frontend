@@ -20,6 +20,10 @@ export class UserService extends baseService {
     resetPasswordService = (resetInfo) => {
         return this.post('users/resetpassword', resetInfo)
     }
+
+    changePasswordService = (changePasswordInfo) => {
+        return this.put('users/changepassword', changePasswordInfo)
+    }
 }
 
 export const userService = new UserService();

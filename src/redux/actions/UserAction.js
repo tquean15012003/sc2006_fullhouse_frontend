@@ -10,7 +10,7 @@ export const signInAction = (loginInfo) => {
             const { navigate } = getState().NavigationReducer
             navigate("/profile", { replace: false })
         } catch (errors) {
-            alert("Invalid username or password")
+            alert(errors.response.data.message)
         }
     };
 }
@@ -37,7 +37,6 @@ export const verifyAction = (OTP) => {
                 verificationCode: OTP.OTP,
                 email: localStorage.getItem(EMAIL)
             }
-            console.log(verificationInfo)
             await userService.verifyService(verificationInfo)
             localStorage.removeItem(EMAIL)
             alert("Verify successfully!")
@@ -63,13 +62,12 @@ export const sendVerificationCodeAction = (email, setSent) => {
 export const resetPasswordAction = (resetInfo) => {
     return async (dispatch, getState) => {
         try {
-            console.log(resetInfo)
             await userService.resetPasswordService(resetInfo)
             alert("Reset password successfully!")
             const { navigate } = getState().NavigationReducer
             navigate("/signin", { replace: false })
         } catch (errors) {
-            alert(errors.response.data.errors[0].message)
+            alert("Something went wrong!!")
         }
     }
 }
@@ -85,5 +83,16 @@ export const signOutAction = () => {
             alert(errors.response.data.errors[0].message)
         }
     }
+}
 
+export const changePasswordAction = (changePasswordInfo) => {
+    return async (dispatch, getState) => {
+        try {
+            await userService.changePasswordService(changePasswordInfo)
+            alert("Change password successfully! Please sign in again!")
+            dispatch(signOutAction())
+        } catch (errors) {
+            alert("Old password is not valid")
+        }
+    }
 }

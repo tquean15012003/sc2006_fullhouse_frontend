@@ -10,7 +10,6 @@ export const SalaryReducer = (state = stateDefault, action) => {
         case SET_SALARY_LIST: {
             let newSalaryList = action.salaryList.filter(row => row.school !== "na")
             newSalaryList.push(demoSalaryObject)
-            console.log(newSalaryList)
             return { ...state, salaryList: newSalaryList };
         }
         default: return { ...state };
