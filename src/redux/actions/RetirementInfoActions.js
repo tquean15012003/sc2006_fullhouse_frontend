@@ -7,7 +7,7 @@ export const getRetirementInfoAction = () => {
             const response = await retirementInfoService.getRetirementInfoService()
             const retirementInfo = response.data.retirementInfo
 
-            if (retirementInfo.name === "") {
+            if (retirementInfo.name === "") {   
                 const { navigate } = getState().NavigationReducer
                 navigate("/submitprofile", { replace: false })
             } else {
@@ -18,6 +18,8 @@ export const getRetirementInfoAction = () => {
             }
 
         } catch (errors) {
+            const { navigate } = getState().NavigationReducer
+            navigate("/", { replace: false })
             alert(errors.response.data.errors[0].message)
         }
     }

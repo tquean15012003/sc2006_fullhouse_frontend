@@ -1,7 +1,7 @@
 const data = [
+  'Increase percentage of investments',
   'Put more money into savings',
   'Try to spend less on monthly expenses',
-  'Increase percentage of investments',
 ]
 
 //hard-coded array

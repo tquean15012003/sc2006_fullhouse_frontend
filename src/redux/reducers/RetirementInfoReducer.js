@@ -3,15 +3,15 @@ import { SET_RETIREMENT_AGE, SET_RETIREMENT_INFO } from "../constants/Retirement
 const stateDefault = {
     retirementInfo: {
         name: "",
-        age: "",
-        ageOfGrad: "",
-        noChild: "",
-        currentSaving: "",
+        age: "20",
+        ageOfGrad: "22",
+        noChild: "0",
+        currentSaving: "0",
         degree: "",
-        salary: "",
-        carCat: "",
-        housePrice: "",
-        investments: ""
+        salary: "0",
+        carCat: "A",
+        housePrice: "0",
+        investments: "0"
     },
     retirementAge: 0
 };

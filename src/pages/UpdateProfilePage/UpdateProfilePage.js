@@ -58,7 +58,6 @@ export default function UpdateProfilePage() {
     }}>
       <HeaderAfterSignIn />
       <div style={{
-            //   fontFamily: "'Fredoka One', cursive"
       }} className="w-screen h-screen text-white flex justify-center items-center">
         <div className='rounded-3xl p-6 flex' style={{ background: "rgba(255, 255, 255, 0.04)" }}>
           <form onSubmit={formik.handleSubmit}>
