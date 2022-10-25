@@ -1,7 +1,6 @@
 {
   "name": "sc2006_fullhouse_frontend",
   "version": "0.1.0",
-  "homepage": "https://tquean15012003.github.io/sc2006_fullhouse_frontend",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.3",
@@ -24,8 +23,6 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
