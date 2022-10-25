@@ -275,7 +275,7 @@ export default function UpdateProfilePage() {
                       type='number'
                       id='investments'
                       className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                      placeholder='5%'
+                      placeholder='5'
                       required
                       onChange={formik.handleChange}
                       value={formik.values.investments}
