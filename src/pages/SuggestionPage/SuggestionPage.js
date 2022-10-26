@@ -1,5 +1,4 @@
-import { useFormik } from 'formik'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import background from '../../assets/images/background.png'
 import HeaderAfterSignIn from '../../components/HeaderAfterSignIn'
@@ -7,21 +6,10 @@ import { getRetirementAgeAction, getRetirementInfoAction } from '../../redux/act
 
 export default function SuggestionPage() {
 
-  const { navigate } = useSelector(state => state.NavigationReducer)
 
   const { retirementAge, retirementInfo } = useSelector(state => state.RetirementInfoReducer)
 
   const dispatch = useDispatch()
-
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: {
-      favouredAge: retirementAge
-    },
-    onSubmit: (values) => {
-      console.log(values)
-    }
-  })
 
   useEffect(() => {
     dispatch(getRetirementAgeAction())
@@ -59,12 +47,12 @@ export default function SuggestionPage() {
             <div className="ml-3 flex flex-col">
               {parseInt(retirementInfo.investments) < 100 ?
                 <div className='mb-5 flex justify-between items-center'>
-                  <p className="">You may now invest {parseInt(retirementInfo?.investments) < 50 ? <span>only</span> : ""} <span className="text-xl lg:text-3xl text-green-400">{retirementInfo.investments}</span> % of your salary.</p>
+                  <p className="">You now invest {parseInt(retirementInfo?.investments) < 50 ? <span>only</span> : ""} <span className={`text-xl lg:text-3xl text-${parseInt(retirementInfo?.investments) < 7 ? "red" : parseInt(retirementInfo?.investments) < 15 ? "orange" : "green"}-400`}>{retirementInfo.investments}</span> % of your salary.</p>
                   <button
                     className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
                     type='text'
                   >
-                    Click to invest more
+                    Update Investment
                   </button>
                 </div> : ""
               }
@@ -75,7 +63,18 @@ export default function SuggestionPage() {
                     className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
                     type='text'
                   >
-                    Click to cut down the cost
+                    Update Cost
+                  </button>
+                </div> : ""
+              }
+              {retirementInfo.salary < 2000 ?
+                <div className='mb-5 flex justify-between items-center'>
+                  <p>Your salary is now <span className="text-xl lg:text-3xl text-red-400">{retirementInfo?.salary}</span>. Try to increase your pay</p>
+                  <button
+                    className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
+                    type='text'
+                  >
+                    Update Salary
                   </button>
                 </div> : ""
               }

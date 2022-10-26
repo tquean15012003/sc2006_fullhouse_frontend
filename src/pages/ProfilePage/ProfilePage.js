@@ -91,7 +91,7 @@ export default function ProfilePage() {
             <div>
               <h2 className="font-bold text-xl">Investment</h2>
               <div className="p-3 text-md lg:text-lg">
-                <p className="text-center text-bold text-xl lg:text-4xl text-red-400">{retirementInfo?.investments}%</p>
+                <p className={`text-center text-bold text-xl lg:text-4xl text-${parseInt(retirementInfo?.investments) < 7 ? "red" : parseInt(retirementInfo?.investments) < 15 ? "orange" : "green"}-400`}>{retirementInfo?.investments}%</p>
               </div>
             </div>
           </div>
