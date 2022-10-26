@@ -24,6 +24,10 @@ export class RetirementInfoService extends baseService {
     updateHousePriceService = (housePrice) => {
         return this.put('retirementinfos/updatehouseprice', housePrice)
     }
+
+    getGuestRetirementAge = (retirementInfo) => {
+        return this.post('retirementinfos/getguestretirementage', retirementInfo)
+    }
 }
 
 export const retirementInfoService = new RetirementInfoService();

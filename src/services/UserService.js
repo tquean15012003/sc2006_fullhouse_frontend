@@ -24,6 +24,10 @@ export class UserService extends baseService {
     changePasswordService = (changePasswordInfo) => {
         return this.put('users/changepassword', changePasswordInfo)
     }
+
+    changeEmailService = (newEmail) => {
+        return this.put('users/changeemail', newEmail)
+    }
 }
 
 export const userService = new UserService();

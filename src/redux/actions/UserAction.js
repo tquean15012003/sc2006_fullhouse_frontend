@@ -96,3 +96,35 @@ export const changePasswordAction = (changePasswordInfo) => {
         }
     }
 }
+
+export const ChangeEmailAction = (newEmail) => {
+    return async (dispatch, getState) => {
+        try {
+            await userService.changeEmailService(newEmail)
+            alert("Change email successfully! Please proceed to verify your email!")
+            localStorage.removeItem(EMAIL)
+            localStorage.setItem(EMAIL, newEmail.newEmail)
+            await userService.sendVerificationCodeService({email: newEmail.newEmail})
+            const { navigate } = getState().NavigationReducer
+            navigate("/verifyemail", { replace: false })
+        } catch (errors) {
+            alert("Email has been taken!")
+        }
+    }
+}
+
+export const verifyEmailAction = (OTP) => {
+    return async (dispatch, getState) => {
+        try {
+            const verificationInfo = {
+                verificationCode: OTP.verificationCode,
+                email: localStorage.getItem(EMAIL)
+            }
+            await userService.verifyService(verificationInfo)
+            alert("Verify email successfully! Please login again!")
+            dispatch(signOutAction())
+        } catch (errors) {
+            alert("Wrong OTP!")
+        }
+    }
+}

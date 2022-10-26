@@ -14,6 +14,9 @@ import SubmitProfilePage from './pages/SubmitProfilePage/SubmitProfilePage'
 import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 import UpdateProfilePage from './pages/UpdateProfilePage/UpdateProfilePage'
 import ChangePasswordPage from './pages/ChangePasswordPage/ChangePasswordPage'
+import ChangeEmailPage from './pages/ChangeEmailPage/ChangeEmailPage'
+import VerifyChangeEmailPage from './pages/ChangeEmailPage/VerifyChangeEmailPage'
+import GuestPage from './pages/GuestPage/GuestPage'
 
 function App() {
   const navigate = useNavigate()
@@ -38,6 +41,9 @@ function App() {
         <Route path='/suggestion' element={<SuggestionPage />} />
         <Route path='/updateprofile' element={<UpdateProfilePage />} />
         <Route path='/changepassword' element={<ChangePasswordPage />} />
+        <Route path='/changeemail' element={<ChangeEmailPage />} />
+        <Route path='/verifyemail' element={<VerifyChangeEmailPage />} />
+        <Route path='/guest' element={<GuestPage />} />
       </Routes>
     </Fragment>
   )

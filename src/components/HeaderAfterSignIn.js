@@ -129,6 +129,33 @@ export default function HeaderAfterSignIn() {
                                         </Menu.Item>
                                         <Menu.Item>
                                             {({ active }) => (
+                                                <p onClick={() => { navigate("/changeemail", { replace: false }) }}
+                                                    className={classNames(
+                                                        "text-white",
+                                                        "block px-4 py-2 text-sm cursor-pointer"
+                                                    )}
+                                                >
+                                                    <svg
+                                                        className="inline"
+                                                        width="10"
+                                                        height="3"
+                                                        viewBox="0 0 10 3"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <rect
+                                                            width="10"
+                                                            height="3"
+                                                            rx="1.5"
+                                                            fill="#D9D9D9"
+                                                        />
+                                                    </svg>{" "}
+                                                    Change email
+                                                </p>
+                                            )}
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
                                                 <p onClick={() => {
                                                     dispatch(signOutAction())
                                                 }}

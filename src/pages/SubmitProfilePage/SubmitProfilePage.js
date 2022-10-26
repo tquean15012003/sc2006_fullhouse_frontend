@@ -97,12 +97,12 @@ export default function SubmitProfilePage() {
                       type='number'
                       id='age'
                       className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                      placeholder='25'
+                      placeholder='20'
                       required
                       onChange={formik.handleChange}
                       value={formik.values.age}
                       onBlur={formik.handleBlur}
-                      min={0}
+                      min={1}
                     />
                   </div>
                   {formik.touched.age && formik.errors.age ? (<div className="mt-2 text-red-400">{formik.errors.age}</div>) : null}
@@ -119,11 +119,12 @@ export default function SubmitProfilePage() {
                       type='number'
                       id='ageOfGrad'
                       className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                      placeholder='0'
+                      placeholder='22'
                       required
                       onChange={formik.handleChange}
                       value={formik.values.ageOfGrad}
                       onBlur={formik.handleBlur}
+                      min={1}
                     />
                   </div>
                   {formik.touched.ageOfGrad && formik.errors.ageOfGrad ? (<div className="mt-2 text-red-400">{formik.errors.ageOfGrad}</div>) : null}
