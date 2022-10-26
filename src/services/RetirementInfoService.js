@@ -12,6 +12,18 @@ export class RetirementInfoService extends baseService {
     updateRetirementInfoService = (retirementInfo) => {
         return this.post('retirementinfos/updateretirementinfo', retirementInfo)
     }
+
+    updateInvestmentService = (investments) => {
+        return this.put('retirementinfos/updateinvestment', investments)
+    }
+
+    updateSalaryService = (salary) => {
+        return this.put('retirementinfos/updatesalary', salary)
+    }
+
+    updateHousePriceService = (housePrice) => {
+        return this.put('retirementinfos/updatehouseprice', housePrice)
+    }
 }
 
 export const retirementInfoService = new RetirementInfoService();

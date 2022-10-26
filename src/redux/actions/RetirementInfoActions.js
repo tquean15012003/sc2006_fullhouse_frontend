@@ -1,6 +1,11 @@
 import { retirementInfoService } from "../../services/RetirementInfoService"
 import { SET_RETIREMENT_AGE, SET_RETIREMENT_INFO } from "../constants/RetirementInfoConstants"
 
+const setRetirementInfoAction = (retirementInfo) => ({
+    type: SET_RETIREMENT_INFO,
+    retirementInfo
+})
+
 export const getRetirementInfoAction = () => {
     return async (dispatch, getState) => {
         try {
@@ -11,10 +16,7 @@ export const getRetirementInfoAction = () => {
                 const { navigate } = getState().NavigationReducer
                 navigate("/submitprofile", { replace: false })
             } else {
-                dispatch({
-                    type: SET_RETIREMENT_INFO,
-                    retirementInfo
-                })
+                dispatch(setRetirementInfoAction(retirementInfo))
             }
 
         } catch (errors) {
@@ -46,6 +48,52 @@ export const updateRetirementInfoAction = (retirementInfo) => {
             alert("Your information has been recorded! ")
             const { navigate } = getState().NavigationReducer
             navigate("/profile", { replace: false })
+        } catch (errors) {
+            alert(errors.response.data.errors[0].message)
+        }
+    }
+}
+
+
+export const updateInvestmentAction = (investments, setShowModal) => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await retirementInfoService.updateInvestmentService({investments: investments})
+            const retirementInfo = response.data.retirementInfo
+            alert("Your information has been recorded! ")
+            dispatch(setRetirementInfoAction(retirementInfo))
+            dispatch(getRetirementAgeAction())
+            setShowModal(false)
+        } catch (errors) {
+            alert(errors.response.data.errors[0].message)
+        }
+    }
+}
+
+export const updateSalaryAction = (salary, setShowModal) => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await retirementInfoService.updateSalaryService({salary: salary})
+            const retirementInfo = response.data.retirementInfo
+            alert("Your information has been recorded! ")
+            dispatch(setRetirementInfoAction(retirementInfo))
+            dispatch(getRetirementAgeAction())
+            setShowModal(false)
+        } catch (errors) {
+            alert(errors.response.data.errors[0].message)
+        }
+    }
+}
+
+export const updateHousePriceAction = (housePrice, setShowModal) => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await retirementInfoService.updateHousePriceService({housePrice: housePrice})
+            const retirementInfo = response.data.retirementInfo
+            alert("Your information has been recorded! ")
+            dispatch(setRetirementInfoAction(retirementInfo))
+            dispatch(getRetirementAgeAction())
+            setShowModal(false)
         } catch (errors) {
             alert(errors.response.data.errors[0].message)
         }

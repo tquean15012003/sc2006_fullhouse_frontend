@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import background from '../../assets/images/background.png'
 import HeaderAfterSignIn from '../../components/HeaderAfterSignIn'
 import { getRetirementAgeAction, getRetirementInfoAction } from '../../redux/actions/RetirementInfoActions'
+import UpdateHousePricePopUp from './UpdateHousePricePopUp'
+import UpdateInvestmentPopUp from './UpdateInvestmentPopUp'
+import UpdateSalaryPopUp from './UpdateSalaryPopUp'
 
 export default function SuggestionPage() {
 
@@ -39,7 +42,7 @@ export default function SuggestionPage() {
           <h1 className='font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-4'>Sugesstion</h1>
           <div className='mb-3'>
             <p className='font-bold text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl mb-4'>
-              Your Current Retirement Age : <span className="text-2xl lg:text-4xl">{retirementAge}</span>
+              Your Current Retirement Age : <span className="text-2xl lg:text-4xl" style={{ color: "#5ED135" }}>{retirementAge}</span>
             </p>
             <p className='font-bold text-lg md:text-xl mb-4'>
               Some suggestions to lower your retirement age are as follows :
@@ -47,40 +50,25 @@ export default function SuggestionPage() {
             <div className="ml-3 flex flex-col">
               {parseInt(retirementInfo.investments) < 100 ?
                 <div className='mb-5 flex justify-between items-center'>
-                  <p className="">You now invest {parseInt(retirementInfo?.investments) < 50 ? <span>only</span> : ""} <span className={`text-xl lg:text-3xl text-${parseInt(retirementInfo?.investments) < 7 ? "red" : parseInt(retirementInfo?.investments) < 15 ? "orange" : "green"}-400`}>{retirementInfo.investments}</span> % of your salary.</p>
-                  <button
-                    className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
-                    type='text'
-                  >
-                    Update Investment
-                  </button>
+                  <p className="">You now invest {parseInt(retirementInfo?.investments) < 50 ? <span>only</span> : ""} <span className={`text-xl lg:text-3xl text-${parseInt(retirementInfo?.investments) < 7 ? "red" : parseInt(retirementInfo?.investments) < 15 ? "orange" : "green"}-400`}>{retirementInfo.investments}%</span> of your salary.</p>
+
+                  <UpdateInvestmentPopUp />
+
                 </div> : ""
               }
               {retirementInfo.housePrice > 500000 ?
                 <div className='mb-5 flex justify-between items-center'>
                   <p>You now spend <span className="text-xl lg:text-3xl text-red-400">{retirementInfo?.housePrice}</span> on your house</p>
-                  <button
-                    className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
-                    type='text'
-                  >
-                    Update Cost
-                  </button>
+                  <UpdateHousePricePopUp />
                 </div> : ""
               }
               {retirementInfo.salary < 2000 ?
                 <div className='mb-5 flex justify-between items-center'>
                   <p>Your salary is now <span className="text-xl lg:text-3xl text-red-400">{retirementInfo?.salary}</span>. Try to increase your pay</p>
-                  <button
-                    className='px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded'
-                    type='text'
-                  >
-                    Update Salary
-                  </button>
+                  <UpdateSalaryPopUp />
                 </div> : ""
               }
             </div>
-
-
           </div>
         </div>
       </div>
