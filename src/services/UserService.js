@@ -28,6 +28,10 @@ export class UserService extends baseService {
     changeEmailService = (newEmail) => {
         return this.put('users/changeemail', newEmail)
     }
+
+    retrieveUsernameService = (userInfo) => {
+        return this.put('users/retrieveusername', userInfo)
+    }
 }
 
 export const userService = new UserService();

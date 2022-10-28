@@ -17,6 +17,7 @@ import ChangePasswordPage from './pages/ChangePasswordPage/ChangePasswordPage'
 import ChangeEmailPage from './pages/ChangeEmailPage/ChangeEmailPage'
 import VerifyChangeEmailPage from './pages/ChangeEmailPage/VerifyChangeEmailPage'
 import GuestPage from './pages/GuestPage/GuestPage'
+import RetrieveUsernamePage from './pages/RetrieveUsernamePage/RetrieveUsernamePage'
 
 function App() {
   const navigate = useNavigate()
@@ -44,6 +45,7 @@ function App() {
         <Route path='/changeemail' element={<ChangeEmailPage />} />
         <Route path='/verifyemail' element={<VerifyChangeEmailPage />} />
         <Route path='/guest' element={<GuestPage />} />
+        <Route path='/retrieveusername' element={<RetrieveUsernamePage/>} />
       </Routes>
     </Fragment>
   )

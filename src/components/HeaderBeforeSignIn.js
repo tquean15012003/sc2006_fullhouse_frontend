@@ -4,11 +4,11 @@ import { Menu, Transition } from '@headlessui/react'
 import { useSelector } from 'react-redux'
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ')
 }
 
 export default function HeaderBeforeSignIn() {
-    
+
     const { navigate } = useSelector(state => state.NavigationReducer)
 
     return (
@@ -49,6 +49,15 @@ export default function HeaderBeforeSignIn() {
                                                     <svg className='inline' width="10" height="3" viewBox="0 0 10 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="10" height="3" rx="1.5" fill="#D9D9D9" />
                                                     </svg> Sign Up
+                                                </p>
+                                            )}
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <p onClick={() => { navigate("/retrieveusername", { replace: false }) }} className={classNames('cursor-pointer text-white', 'block px-4 py-2 text-sm')} >
+                                                    <svg className='inline' width="10" height="3" viewBox="0 0 10 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect width="10" height="3" rx="1.5" fill="#D9D9D9" />
+                                                    </svg> Retrieve Username
                                                 </p>
                                             )}
                                         </Menu.Item>

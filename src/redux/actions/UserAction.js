@@ -128,3 +128,19 @@ export const verifyEmailAction = (OTP) => {
         }
     }
 }
+
+export const retrieveUsernameAction = (userInfo) => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await userService.retrieveUsernameService(userInfo)
+            localStorage.removeItem(EMAIL)
+            localStorage.setItem(EMAIL, userInfo.newEmail)
+            alert(response.data.message)
+            const { navigate } = getState().NavigationReducer;
+            navigate("/confirmsignup", { replace: false })
+        } catch (errors) {
+            console.log(errors.response.data.message)
+            alert(errors.response.data.message)
+        }
+    }
+}
