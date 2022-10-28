@@ -5,6 +5,10 @@ export class UserService extends baseService {
         return this.post('users/signin', loginInfo);
     }
 
+    googleSignInService = () => {
+        return this.get('users/googlesignin');
+    }
+
     signUpService = (user) => {
         return this.post('users/signup', user)
     }

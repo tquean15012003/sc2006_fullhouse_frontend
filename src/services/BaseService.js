@@ -6,6 +6,7 @@ export class baseService {
         return Axios({
             url: `${DOMAIN}/${url}`,
             method: 'GET',
+            withCredentials: true,
             headers: { 'token': localStorage.getItem(TOKEN) }
         })
     }

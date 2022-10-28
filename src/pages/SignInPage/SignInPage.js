@@ -2,8 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import { useFormik } from 'formik'
-import { signInAction } from '../../redux/actions/UserAction'
+import { googleSignInAction, signInAction } from '../../redux/actions/UserAction'
 import background from '../../assets/images/background.png'
+import logo from '../../assets/images/google.png'
 
 export default function SignInPage() {
   const { navigate } = useSelector((state) => state.NavigationReducer);
@@ -75,12 +76,32 @@ export default function SignInPage() {
             >
               Forget password?
             </p>
-            <div className="mt-3 flex justify-center items-center">
+            <div className="mt-3 flex justify-around items-center">
               <button
                 className="px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl"
                 type="submit"
               >
                 Sign In
+              </button>
+              <button
+                onClick={async () => {
+                  let timer = null
+                  const googleLoginURL = "http://localhost:4000/api/v1/google/auth"
+                  const newWindow = window.open(googleLoginURL, "_blank", "width=500, height=600")
+
+                  if (newWindow) {
+                    timer = setInterval(() => {
+                      if (newWindow.closed) {
+                        dispatch(googleSignInAction())
+                        if (timer) clearInterval(timer)
+                      }
+                    })
+                  }
+                }}
+                className="px-6 py-2 hover:bg-purple-500 bg-purple-800 duration-500 hover:scale-110 hover:text-black rounded-2xl"
+                type="button"
+              >
+                <img className='w-7 h-7' src={logo} alt="googleLogo" />
               </button>
             </div>
           </form>

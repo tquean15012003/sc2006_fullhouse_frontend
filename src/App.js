@@ -18,6 +18,7 @@ import ChangeEmailPage from './pages/ChangeEmailPage/ChangeEmailPage'
 import VerifyChangeEmailPage from './pages/ChangeEmailPage/VerifyChangeEmailPage'
 import GuestPage from './pages/GuestPage/GuestPage'
 import RetrieveUsernamePage from './pages/RetrieveUsernamePage/RetrieveUsernamePage'
+import SignInSucessPage from './pages/SignInPage/SignInSucessPage'
 
 function App() {
   const navigate = useNavigate()
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/signin' element={<SignInPage />} />
+        <Route path='/signinsuccess' element={<SignInSucessPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/confirmsignup' element={<ConfirmSignUp />} />
         <Route path='/resetpassword' element={<ResetPasswordPage />} />

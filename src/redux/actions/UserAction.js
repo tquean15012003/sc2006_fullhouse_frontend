@@ -76,6 +76,9 @@ export const signOutAction = () => {
     return async (dispatch, getState) => {
         try {
             localStorage.removeItem(TOKEN);
+            var mydate = new Date();
+            mydate.setTime(mydate.getTime() - 1);
+            document.cookie = "username=; expires=" + mydate.toGMTString();             
             const { navigate } = getState().NavigationReducer
             navigate("/", { replace: false })
             window.location.reload();
@@ -104,7 +107,7 @@ export const ChangeEmailAction = (newEmail) => {
             alert("Change email successfully! Please proceed to verify your email!")
             localStorage.removeItem(EMAIL)
             localStorage.setItem(EMAIL, newEmail.newEmail)
-            await userService.sendVerificationCodeService({email: newEmail.newEmail})
+            await userService.sendVerificationCodeService({ email: newEmail.newEmail })
             const { navigate } = getState().NavigationReducer
             navigate("/verifyemail", { replace: false })
         } catch (errors) {
@@ -143,4 +146,18 @@ export const retrieveUsernameAction = (userInfo) => {
             alert(errors.response.data.message)
         }
     }
+}
+
+export const googleSignInAction = () => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await userService.googleSignInService()
+            localStorage.removeItem(TOKEN)
+            localStorage.setItem(TOKEN, response.data.token)
+            const { navigate } = getState().NavigationReducer
+            navigate("/profile", { replace: false })
+        } catch (errors) {
+            console.log(errors)
+        }
+    };
 }
