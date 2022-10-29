@@ -58,6 +58,7 @@ export const updateRetirementInfoAction = (retirementInfo) => {
 export const updateInvestmentAction = (investments, setShowModal) => {
     return async (dispatch, getState) => {
         try {
+            console.log(investments)
             const response = await retirementInfoService.updateInvestmentService({investments: investments})
             const retirementInfo = response.data.retirementInfo
             alert("Your information has been recorded! ")

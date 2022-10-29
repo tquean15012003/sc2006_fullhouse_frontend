@@ -32,7 +32,7 @@ export default function HeaderBeforeSignIn() {
                                 leaveFrom="transform opacity-100 scale-100"
                                 leaveTo="transform opacity-0 scale-95"
                             >
-                                <Menu.Items style={{ background: "rgba(255, 255, 255, 0.04)" }} className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <Menu.Items className="bg-black/90 lg:bg-white/5 absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                     <div className="py-1">
                                         <Menu.Item>
                                             {({ active }) => (
@@ -85,7 +85,7 @@ export default function HeaderBeforeSignIn() {
                         </Menu>
                         <span onClick={() => { navigate("/", { replace: false }) }} className="duration-500 hover:scale-125  cursor-pointer text-white self-center text-xl xl:text-2xl font-bold whitespace-nowrap">Full House</span>
                     </div>
-                    <div className="flex items-center lg:order-2">
+                    <div className="hidden md:flex items-center lg:order-2">
                         <p onClick={() => { navigate("/signin", { replace: false }) }} className="duration-500 hover:scale-110 cursor-pointer text-white focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">SIGN IN</p>
                         <p onClick={() => { navigate("/signup", { replace: false }) }} className="duration-500 hover:scale-110 cursor-pointer focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800" style={{ color: "#FA0F0F" }}>SIGN UP</p>
                     </div>

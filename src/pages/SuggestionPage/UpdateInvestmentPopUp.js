@@ -16,7 +16,7 @@ export default function UpdateInvestmentPopUp() {
       investments: retirementInfo.investments
     },
     onSubmit: (values) => {
-      dispatch(updateInvestmentAction(values, setShowModal))
+      dispatch(updateInvestmentAction(values.investments, setShowModal))
     }
   })
 
@@ -31,7 +31,7 @@ export default function UpdateInvestmentPopUp() {
       </button>
       {showModal ? (
         <>
-          <div className="w-screen bg-black/60 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <form onSubmit={formik.handleSubmit} className="w-screen bg-black/60 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="w-1/2 my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg  flex flex-col w-full bg-neutral-700 outline-none focus:outline-none">
@@ -50,7 +50,7 @@ export default function UpdateInvestmentPopUp() {
                 {/*body*/}
                 <div className=" pt-6 px-3 md:px-6 flex-auto">
                   <div className="rounded-3xl px-3 md:px-6">
-                    <form>
+                    <div>
                       <div className="mb-6 flex justify-between items-center">
                         <label
                           htmlFor="investments"
@@ -71,7 +71,7 @@ export default function UpdateInvestmentPopUp() {
                           onBlur={formik.handleBlur}
                         />
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
                 {/*footer*/}
@@ -85,18 +85,14 @@ export default function UpdateInvestmentPopUp() {
                   </button>
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      dispatch(updateInvestmentAction(formik.values.investments, setShowModal))
-                    }}
+                    type="submit"
                   >
                     Save Changes
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </>
       ) : null}
     </>

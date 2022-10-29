@@ -40,8 +40,7 @@ export default function HeaderAfterSignIn() {
                                 leaveTo="transform opacity-0 scale-95"
                             >
                                 <Menu.Items
-                                    style={{ background: "rgba(255, 255, 255, 0.04)" }}
-                                    className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    className="bg-black/90 lg:bg-white/5 absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 >
                                     <div className="py-1">
                                         <Menu.Item>
@@ -191,7 +190,7 @@ export default function HeaderAfterSignIn() {
                             Full House
                         </span>
                     </div>
-                    <div className="flex items-center lg:order-2">
+                    <div className="hidden md:flex items-center lg:order-2">
                         <p onClick={() => { navigate("/profile", { replace: false }) }} className="duration-500 hover:scale-110 cursor-pointer text-white focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">PROFILE</p>
                         <p onClick={() => { navigate("/suggestion", { replace: false }) }} className="duration-500 hover:scale-110 cursor-pointer text-white focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800">SUGGESTION</p>
                         <p onClick={() => { dispatch(signOutAction()) }} className="duration-500 hover:scale-110 cursor-pointer focus:ring-4 font-medium rounded-lg text-md lg:text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 hover:bg-gray-700 focus:outline-none focus:ring-gray-800" style={{ color: "#FA0F0F" }}>SIGN OUT</p>

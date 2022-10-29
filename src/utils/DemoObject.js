@@ -48,7 +48,7 @@ export const uniMap = {
     "National University of Singapore": "NUS",
     "Singapore Institute of Technology": "SIT",
     "Singapore Management University": "SMU",
-    "Singapore University of Social Science": "SUSS",
+    "Singapore University of Social Sciences": "SUSS",
     "Singapore University of Technology and Design": "SUTD",
     "Singapore University of Technology & Design": "SUTD",
 

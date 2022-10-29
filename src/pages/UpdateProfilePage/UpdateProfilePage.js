@@ -178,7 +178,7 @@ export default function UpdateProfilePage() {
               </div>
               <div>
                 <div className='mb-6'>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center max-w-2xl">
                     <label
                       htmlFor='degree'
                       className='text-base md:text-xl block font-medium text-white mr-4'
@@ -190,7 +190,7 @@ export default function UpdateProfilePage() {
                       className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
                       options={salaryList}
                       getOptionLabel={(option) =>
-                        option.degree + ", " + option.university
+                        option.degree + ", " + uniMap[option.university]
                       }
                       getOptionValue={(option) => option._id}
                       onChange={handleSelect}

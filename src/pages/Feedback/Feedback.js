@@ -61,7 +61,8 @@ export default function Feedback() {
                 value={formik.values.feedback}
                 type="feedback" id="feedback"
                 className="text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full h-40 lg:h-80 p-4"
-                placeholder="Please leave feedbacks!" >
+                placeholder="Please leave feedbacks!" 
+                required>
               </textarea>
 
             </div>
