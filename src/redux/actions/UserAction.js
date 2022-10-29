@@ -67,7 +67,7 @@ export const resetPasswordAction = (resetInfo) => {
             const { navigate } = getState().NavigationReducer
             navigate("/signin", { replace: false })
         } catch (errors) {
-            alert("Something went wrong!!")
+            alert("Wrong OTP!!")
         }
     }
 }
