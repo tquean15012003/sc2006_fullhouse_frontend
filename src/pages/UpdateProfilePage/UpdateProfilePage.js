@@ -7,7 +7,7 @@ import Select from "react-select";
 import { getSalaryListAction } from '../../redux/actions/SalaryActions'
 import { carCatList, uniMap } from '../../utils/DemoObject'
 import { getRetirementInfoAction, updateRetirementInfoAction } from '../../redux/actions/RetirementInfoActions'
-
+import * as Yup from 'yup';
 
 export default function UpdateProfilePage() {
 
@@ -42,6 +42,12 @@ export default function UpdateProfilePage() {
       housePrice: retirementInfo.housePrice,
       investments: retirementInfo.investments
     },
+    validationSchema: Yup.object({
+      age: Yup.number()
+        .min(1, 'Min is 1'),
+      ageOfGrad: Yup.number()
+        .min(1, 'Min is 1')
+    }),
     onSubmit: (values) => {
       dispatch(updateRetirementInfoAction(values))
     }

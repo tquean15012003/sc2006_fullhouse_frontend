@@ -7,6 +7,7 @@ import Select from "react-select";
 import { getSalaryListAction } from '../../redux/actions/SalaryActions'
 import { carCatList, uniMap } from '../../utils/DemoObject'
 import { updateRetirementInfoAction } from '../../redux/actions/RetirementInfoActions'
+import * as Yup from 'yup';
 
 
 export default function SubmitProfilePage() {
@@ -38,6 +39,12 @@ export default function SubmitProfilePage() {
       housePrice: "",
       investments: ""
     },
+    validationSchema: Yup.object({
+      age: Yup.number()
+        .min(1, 'Min is 1'),
+      ageOfGrad: Yup.number()
+        .min(1, 'Min is 1')
+    }),
     onSubmit: (values) => {
       dispatch(updateRetirementInfoAction(values))
     }
@@ -55,7 +62,7 @@ export default function SubmitProfilePage() {
     }}>
       <HeaderAfterSignIn />
       <div style={{
-              // fontFamily: "'Fredoka One', cursive"
+        // fontFamily: "'Fredoka One', cursive"
       }} className="w-screen h-screen text-white flex justify-center items-center">
         <div className='rounded-3xl p-6 flex' style={{ background: "rgba(255, 255, 255, 0.04)" }}>
           <form onSubmit={formik.handleSubmit}>
