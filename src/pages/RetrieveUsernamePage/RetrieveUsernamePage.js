@@ -52,7 +52,7 @@ export default function RetrieveUsernamePage() {
         >
           <form onSubmit={formik.handleSubmit}>
             <h1 className='text-lg md:text-2xl font-bold text-center mb-4'>
-              RETRIEVE USERNAME
+              REVERIFICATION
             </h1>
 
             <div className='mb-6'>

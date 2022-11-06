@@ -47,7 +47,7 @@ function App() {
         <Route path='/changeemail' element={<ChangeEmailPage />} />
         <Route path='/verifyemail' element={<VerifyChangeEmailPage />} />
         <Route path='/guest' element={<GuestPage />} />
-        <Route path='/retrieveusername' element={<RetrieveUsernamePage/>} />
+        <Route path='/reverification' element={<RetrieveUsernamePage/>} />
       </Routes>
     </Fragment>
   )
