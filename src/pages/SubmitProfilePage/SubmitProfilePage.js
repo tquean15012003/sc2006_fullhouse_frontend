@@ -43,7 +43,18 @@ export default function SubmitProfilePage() {
       age: Yup.number()
         .min(1, 'Min is 1'),
       ageOfGrad: Yup.number()
-        .min(1, 'Min is 1')
+        .min(1, 'Min is 1'),
+      noChild: Yup.number()
+        .min(0, 'Min is 0'),
+      salary: Yup.number()
+        .min(0, 'Min is 0'),
+      currentSaving: Yup.number()
+        .min(0, 'Min is 0'),
+      housePrice: Yup.number()
+        .min(0, 'Min is 0'),
+      investments: Yup.number()
+        .min(0, 'Min is 0')
+        .max(100, 'Max is 100')
     }),
     onSubmit: (values) => {
       dispatch(updateRetirementInfoAction(values))
@@ -193,7 +204,7 @@ export default function SubmitProfilePage() {
                     </label>
                     <Select
                       id="degree"
-                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
+                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500 p-1"
                       options={salaryList}
                       getOptionLabel={(option) =>
                         option.degree + ", " + uniMap[option.university]
@@ -220,6 +231,7 @@ export default function SubmitProfilePage() {
                       onChange={formik.handleChange}
                       value={formik.values.salary}
                       onBlur={formik.handleBlur}
+                      min={0}
                     />
                   </div>
                   {formik.touched.salary && formik.errors.salary ? (<div className="mt-2 text-red-400">{formik.errors.salary}</div>) : null}
@@ -234,7 +246,7 @@ export default function SubmitProfilePage() {
                     </label>
                     <Select
                       id="carCat"
-                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
+                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500 p-1"
                       options={carCatList}
                       getOptionLabel={(option) =>
                         option.value
@@ -244,16 +256,6 @@ export default function SubmitProfilePage() {
                         formik.setFieldValue("carCat", e.value)
                       }}
                     />
-                    {/* <input
-                      type='text'
-                      id='catCat'
-                      className='text-base md:text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-                      placeholder='400000'
-                      required
-                      onChange={formik.handleChange}
-                      value={formik.values.catCat}
-                      onBlur={formik.handleBlur}
-                    /> */}
                   </div>
                   {formik.touched.catCat && formik.errors.catCat ? (<div className="mt-2 text-red-400">{formik.errors.catCat}</div>) : null}
                 </div>

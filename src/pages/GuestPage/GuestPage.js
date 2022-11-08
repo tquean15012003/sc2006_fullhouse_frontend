@@ -6,7 +6,7 @@ import Select from "react-select";
 import { carCatList } from '../../utils/DemoObject'
 import HeaderBeforeSignIn from '../../components/HeaderBeforeSignIn'
 import { getGuestRetirementAgeAction } from '../../redux/actions/GuestAction';
-
+import * as Yup from 'yup';
 
 export default function GuestPage() {
 
@@ -27,6 +27,23 @@ export default function GuestPage() {
             housePrice: "",
             investments: ""
         },
+        validationSchema: Yup.object({
+            age: Yup.number()
+              .min(1, 'Min is 1'),
+            ageOfGrad: Yup.number()
+              .min(1, 'Min is 1'),
+            noChild: Yup.number()
+              .min(0, 'Min is 0'),
+            salary: Yup.number()
+              .min(0, 'Min is 0'),
+            currentSaving: Yup.number()
+              .min(0, 'Min is 0'),
+            housePrice: Yup.number()
+              .min(0, 'Min is 0'),
+            investments: Yup.number()
+              .min(0, 'Min is 0')
+              .max(100, 'Max is 100')
+          }),
         onSubmit: (values) => {
             dispatch(getGuestRetirementAgeAction(values, setShow))
         }
@@ -162,6 +179,7 @@ export default function GuestPage() {
                                             onChange={formik.handleChange}
                                             value={formik.values.salary}
                                             onBlur={formik.handleBlur}
+                                            min={0}
                                         />
                                     </div>
                                     {formik.touched.salary && formik.errors.salary ? (<div className="mt-2 text-red-400">{formik.errors.salary}</div>) : null}
@@ -176,7 +194,7 @@ export default function GuestPage() {
                                         </label>
                                         <Select
                                             id="carCat"
-                                            className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
+                                            className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500 p-1"
                                             options={carCatList}
                                             getOptionLabel={(option) =>
                                                 option.value

@@ -46,7 +46,18 @@ export default function UpdateProfilePage() {
       age: Yup.number()
         .min(1, 'Min is 1'),
       ageOfGrad: Yup.number()
-        .min(1, 'Min is 1')
+        .min(1, 'Min is 1'),
+      noChild: Yup.number()
+        .min(0, 'Min is 0'),
+      salary: Yup.number()
+        .min(0, 'Min is 0'),
+      currentSaving: Yup.number()
+        .min(0, 'Min is 0'),
+      housePrice: Yup.number()
+        .min(0, 'Min is 0'),
+      investments: Yup.number()
+        .min(0, 'Min is 0')
+        .max(100, 'Max is 100')
     }),
     onSubmit: (values) => {
       dispatch(updateRetirementInfoAction(values))
@@ -193,7 +204,7 @@ export default function UpdateProfilePage() {
                     </label>
                     <Select
                       id="degree"
-                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
+                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500 p-1"
                       options={salaryList}
                       getOptionLabel={(option) =>
                         option.degree + ", " + uniMap[option.university]
@@ -220,6 +231,7 @@ export default function UpdateProfilePage() {
                       onChange={formik.handleChange}
                       value={formik.values.salary}
                       onBlur={formik.handleBlur}
+                      min={0}
                     />
                   </div>
                   {formik.touched.salary && formik.errors.salary ? (<div className="mt-2 text-red-400">{formik.errors.salary}</div>) : null}
@@ -234,7 +246,7 @@ export default function UpdateProfilePage() {
                     </label>
                     <Select
                       id="carCat"
-                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500"
+                      className="text-base md:text-xl text-black flex-auto rounded-2xl focus:ring-blue-500 focus:border-blue-500 p-1"
                       options={carCatList}
                       getOptionLabel={(option) =>
                         option.value
